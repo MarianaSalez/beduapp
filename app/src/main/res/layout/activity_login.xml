@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="@color/backgroundNegro"
+android:orientation="vertical"
+tools:layout_editor_absoluteX="1dp"
+tools:layout_editor_absoluteY="1dp"
+tools:context=".Login">
+
+
+    //logo Imagen y texto
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:scaleType="fitEnd"
+        app:srcCompat="@drawable/logo_bedu" />
+
+    <TextView
+    android:id="@+id/appName"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/backgroundNegro"
+    android:text="@string/nameApp"
+    android:textAlignment="center"
+    android:textColor="@color/NaranjaBedu"
+    android:textSize="34sp"
+    android:textStyle="bold"
+    android:layout_marginBottom="90dp"
+    tools:visibility="visible" />
+
+
+
+//Inputs mail y contraseña
+
+<EditText
+    android:id="@+id/EmailAddress"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:drawableLeft="@drawable/person"
+    android:hint="@string/hintMail"
+    android:textColorHint="@color/blanco"
+    android:inputType="textEmailAddress"
+    android:layout_gravity="center"
+
+    android:textColor="@color/blanco"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/mailInvalido"
+        android:visibility="invisible"
+        android:layout_gravity="center"
+        android:text="@string/mailIncorrecto"/>
+
+
+    <EditText
+    android:id="@+id/Password"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:drawableLeft="@drawable/candado"
+    android:ems="10"
+    android:hint="@string/hintContraseña"
+    android:textColorHint="@color/blanco"
+    android:inputType="textPassword"
+    android:textAlignment="center"
+    android:textColor="@color/blanco"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/passwordIncorrecto"
+        android:visibility="invisible"
+        android:layout_gravity="center"
+        android:text="@string/passIncorrecto"/>
+
+//Botones de Inicio de Sesión y registo
+<Button
+    android:id="@+id/inicio"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:backgroundTint="@color/NaranjaBedu"
+    android:text="@string/inicioSesion"
+    android:textColor="@color/blanco"
+    />
+
+
+<Button
+    android:id="@+id/registro"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="@string/registro"
+    android:backgroundTint="@color/backgroundNegro"
+    android:textColor="@color/blanco"
+    android:layout_marginBottom="120dp"/>
+
+</LinearLayout>
