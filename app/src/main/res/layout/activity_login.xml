@@ -50,7 +50,6 @@ tools:context=".Login">
     android:textColorHint="@color/blanco"
     android:inputType="textEmailAddress"
     android:layout_gravity="center"
-
     android:textColor="@color/blanco"/>
 
     <TextView
@@ -102,6 +101,6 @@ tools:context=".Login">
     android:text="@string/registro"
     android:backgroundTint="@color/backgroundNegro"
     android:textColor="@color/blanco"
-    android:layout_marginBottom="120dp"/>
+    android:layout_marginBottom="110dp"/>
 
 </LinearLayout>
