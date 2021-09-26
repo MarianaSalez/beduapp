@@ -10,19 +10,20 @@ android:background="@color/backgroundNegro"
 android:orientation="vertical"
 tools:layout_editor_absoluteX="1dp"
 tools:layout_editor_absoluteY="1dp"
-tools:context=".Login">
-
+tools:context=".Login"
+    tools:ignore="ExtraText">
 
     //logo Imagen y texto
 
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="150dp"
-        android:layout_height="50dp"
+        android:layout_height="0dp"
         android:layout_gravity="center"
         android:layout_weight="1"
         android:scaleType="fitEnd"
-        app:srcCompat="@drawable/logo_bedu" />
+        app:srcCompat="@drawable/logo_bedu"
+       />
 
     <TextView
     android:id="@+id/appName"
@@ -41,25 +42,84 @@ tools:context=".Login">
 
 //Inputs mail y contraseña
 
-    <EditText
-        android:id="@+id/EmailAddress"
-        android:layout_width="wrap_content"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/emailAddress"
+        android:layout_width="251dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginBottom="10dp"
-        android:drawableLeft="@drawable/person"
-        android:hint="@string/hintMail"
-        android:inputType="textEmailAddress"
-        android:textColor="@color/blanco"
-        android:textColorHint="#80FFFFFF" />
+        android:hint="@string/correo"
+        android:textColorHint="@color/hint"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:boxStrokeColor="@color/hint"
+        app:boxStrokeWidth="2dp"
+        app:startIconDrawable="@drawable/person"
+        app:startIconTint="@color/hint"
+        app:hintTextColor="@color/hint"
+        app:errorEnabled="true"
+        >
 
-    <!--<TextView
-        android:layout_width="wrap_content"
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:maxLines="1"
+            android:textColor="@color/blanco"
+            android:background="@null"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/Password"
+        android:layout_width="251dp"
         android:layout_height="wrap_content"
-        android:id="@+id/mailInvalido"
-        android:visibility="invisible"
         android:layout_gravity="center"
-        android:text="@string/mailIncorrecto"/>-->
+        android:layout_marginBottom="10dp"
+        android:hint="@string/pass"
+        android:textColorHint="@color/hint"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:boxStrokeColor="@color/hint"
+        app:boxStrokeWidth="2dp"
+        app:startIconDrawable="@drawable/candado"
+        app:startIconTint="@color/hint"
+        app:endIconMode="password_toggle"
+        app:endIconTint="@color/hint"
+        app:hintTextColor="@color/hint"
+        app:errorEnabled="true"
+
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:maxLines="1"
+            android:textColor="@color/blanco"
+            android:background="@null"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!--<EditText
+       android:id="@+id/EmailAddress"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_gravity="center"
+       android:layout_marginBottom="10dp"
+       android:drawableLeft="@drawable/person"
+       android:hint="@string/hintMail"
+       android:inputType="textEmailAddress"
+       android:textColor="@color/blanco"
+       android:textColorHint="#80FFFFFF" />
+
+  <TextView
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:id="@+id/mailInvalido"
+       android:visibility="invisible"
+       android:layout_gravity="center"
+       android:text="@string/mailIncorrecto"/>
 
 
     <EditText
@@ -76,7 +136,7 @@ tools:context=".Login">
         android:textColor="@color/blanco"
         android:textColorHint="#80FFFFFF" />
 
-    <!--<TextView
+    <TextView
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:id="@+id/passwordIncorrecto"

@@ -12,6 +12,7 @@
     <color name="backgroundNegro">#172126</color>
     <color name="NaranjaBedu"> #f03c15</color>
     <color name="blanco">#FFFFFF</color>
+    <color name="hint">#80FFFFFF</color>
 
     //Colores especificados para la app
     <color name="dbackgroundNegro">#000000</color>

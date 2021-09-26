@@ -1,10 +1,18 @@
 <resources>
     <string name="app_name">Bedu shop</string>
     <string name="nameApp">Bedu shop</string>
-    <string name="hintMail">nombre@ejemplo.com</string>
-    <string name="hintContraseña">Ingrese su contaseña</string>
     <string name="inicioSesion"> INICIAR SESIÓN</string>
     <string name="registro">Registrate aquí</string>
-    <!--<string name="mailIncorrecto">Ingrese una direccion de correo valida</string>
+    <string name="correo"> Correo electrónico</string>
+    <string name="pass">Contaseña</string>
+    
+    <string name="error1">Ingrese e-mail válido</string>
+    <string name="error2">Ingrese contraseña válida</string>
+
+    <!--STRINGS USADAS COMO EDIT TEXT
+    <string name="hintMail">nombre@ejemplo.com</string>
+    <string name="hintContraseña">Ingrese su contaseña</string>
+
+    <string name="mailIncorrecto">Ingrese una direccion de correo valida</string>
     <string name="passIncorrecto">Ingrese una contraseña valida</string>-->
 </resources>
