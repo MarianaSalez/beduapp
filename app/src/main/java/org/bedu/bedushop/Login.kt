@@ -10,7 +10,7 @@ import android.widget.Toast
 import org.w3c.dom.Text
 
 class Login : AppCompatActivity() {
-    private lateinit var mail: EditText
+   /* private lateinit var mail: EditText
     private lateinit var pass: EditText
     private lateinit var registro: Button
     private lateinit var inicio: Button
@@ -26,8 +26,10 @@ class Login : AppCompatActivity() {
         pass = findViewById(R.id.Password)
         registro = findViewById(R.id.registro)
         inicio = findViewById(R.id.inicio)
-        validarMail = findViewById(R.id.mailInvalido)
+       validarMail = findViewById(R.id.mailInvalido)
         validarPass = findViewById(R.id.passwordIncorrecto)
+
+        //Verificacion de que no este vacios los input
 
         inicio.setOnClickListener {
             if (mail.equals("")) {
@@ -39,5 +41,5 @@ class Login : AppCompatActivity() {
 
             }
         }
-    }
+    }*/
 }
