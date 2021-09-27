@@ -54,8 +54,9 @@ class MainActivity : AppCompatActivity() {
         inicio.setOnClickListener{
 
             if(validarForm()){
-                Toast.makeText(this, "Inicio de Sesión exitoso", Toast.LENGTH_SHORT).show()
-            }
+                val intent=Intent(this, Shop::class.java).apply {  }
+                startActivity(intent)}
+
         }
 
         registro.setOnClickListener{

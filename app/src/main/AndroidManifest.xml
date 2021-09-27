@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BEDUSHOP">
         <activity
+            android:name=".Shop"
+            android:exported="true" />
+        <activity
             android:name=".Registrar"
             android:exported="true" />
         <activity
