@@ -31,13 +31,13 @@ android {
         light{
             applicationId "org.bedu.buildvariant.light"
             dimension "theme"
-            applicationIdSuffix ".free"
+            applicationIdSuffix ".light"
             versionNameSuffix "-light"
         }
         dark{
             applicationId "org.bedu.buildvariant.dark"
             dimension "theme"
-            applicationIdSuffix ".paid"
+            applicationIdSuffix ".dark"
             versionNameSuffix "-dark"
         }
     }
