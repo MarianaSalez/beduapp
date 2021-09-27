@@ -10,7 +10,7 @@ android:background="@color/backgroundNegro"
 android:orientation="vertical"
 tools:layout_editor_absoluteX="1dp"
 tools:layout_editor_absoluteY="1dp"
-tools:context=".Login"
+tools:context=".MainActivity"
     tools:ignore="ExtraText">
 
     //logo Imagen y texto

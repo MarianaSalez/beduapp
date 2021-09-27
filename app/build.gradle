@@ -21,7 +21,27 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+        debug{
+            applicationIdSuffix ".debug"
+            debuggable true
+        }
     }
+    flavorDimensions 'theme'
+    productFlavors{
+        light{
+            applicationId "org.bedu.buildvariant.light"
+            dimension "theme"
+            applicationIdSuffix ".free"
+            versionNameSuffix "-light"
+        }
+        dark{
+            applicationId "org.bedu.buildvariant.dark"
+            dimension "theme"
+            applicationIdSuffix ".paid"
+            versionNameSuffix "-dark"
+        }
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -39,6 +59,7 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.1.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     api 'com.google.android.material:material:1.3.0-alpha03'
+    implementation 'com.google.android.gms:play-services-base:17.6.0'
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'

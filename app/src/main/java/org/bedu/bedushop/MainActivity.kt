@@ -58,6 +58,10 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        registro.setOnClickListener{
+            val intent=Intent(this, Registrar::class.java).apply {  }
+            startActivity(intent)}
+
 
 
 
@@ -88,9 +92,7 @@ class MainActivity : AppCompatActivity() {
 
 
 
-       registro.setOnClickListener{
-            val intent=Intent(this, RegisterActivity::class.java).apply {  }
-            startActivity(intent)}
+
 
         inicio.setOnClickListener {
             if (mail.equals("")) {
