@@ -4,8 +4,8 @@ _Este es un proyecto desarrollado dentro del curso 'Desarrollo Móvil Kotlin, im
 
 ## OBJETIVO 💼
 
-_La app desarrollada consiste en un e-commerce. Es un proyecto que se encuentra en develompemnt, actualmente con datos ficticios de productos, 
-sin acceso a base da datos asincronica. En la misma se accede a una pantalla de inicio de sesióm, se puede registrar el usuario, visiualizar una lista de productos 
+_La app desarrollada consiste en un e-commerce. Es un proyecto que se encuentra en develompment, actualmente con datos ficticios de productos, 
+sin acceso a base da datos asincronica. En la misma se accede a una pantalla de inicio de sesióm, se puede registrar el usuario, visualizar una lista de productos 
 y  añadirlos a un carrito de compras.
 _
 
@@ -13,7 +13,7 @@ _
 ### COMO FUNCIONA 📋
 
 _Como se observa en la imagen siguiente, la app tiene su landing page en el inicio de sesion, pudiendo acceder al registro en caso de no tener un  usuario creado.
-Una vez iniciada sesion, se puede navegar en la actividad de shop, entre tres pantallas de inicio que contiene lista de productos (pudiendo acceder al detalle del 
+Una vez iniciada sesión, se puede navegar en la actividad de shop, entre tres pantallas de inicio que contiene lista de productos (pudiendo acceder al detalle del 
 producto y agregarlo al carrito), un carrito que contiene los productos seleccionados y una pantalla con informacion del usuario que aun se encuentra en construccion. 
 Además, se cuenta con un menu superior sin funcionalidad momentanea de la opcion de busqueda, pero con acceso a la pagina de BEDU.
 
