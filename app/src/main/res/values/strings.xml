@@ -36,10 +36,10 @@
     <string name="page_title">BEDU SHOP</string>
     <string name="help">Ayuda</string>
     <string name="search">Buscar</string>
-    <!--STRINGS USADAS COMO EDIT TEXT
-    <string name="hintMail">nombre@ejemplo.com</string>
-    <string name="hintContraseña">Ingrese su contaseña</string>
 
-    <string name="mailIncorrecto">Ingrese una direccion de correo valida</string>
-    <string name="passIncorrecto">Ingrese una contraseña valida</string>-->
+//Strings para Fragments Shop
+    <string name="pageUsuario"> Bienvenido Usuario!</string>
+    <string name="pageCarrito">Carrito de compras</string>
+    <string name="compras">Compras Realizadas</string>
+
 </resources>
