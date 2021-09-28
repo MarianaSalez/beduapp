@@ -26,7 +26,8 @@ class Shop : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_shop)
 
-        /*Inicializa frament segun su origen*/
+        /*Inicializa frament segun su origen
+        * Se es por Inicio seccion o registrar o DETAIL*/
         val origen : String = intent.getStringExtra("origen").toString()
         if(origen == "DETAIL"){
             replaceFragment(carritoFragment)
@@ -37,7 +38,8 @@ class Shop : AppCompatActivity() {
         }
 
 
-        /*Controlador del navegador*/
+        /*Controlador del navegador
+        * Dependiendo lo que seleccione el usuario en el Bottom Nav te envia a dicho fragment*/
         val bottomNavigation = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         bottomNavigation.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
@@ -94,13 +96,13 @@ class Shop : AppCompatActivity() {
                 else -> super.onOptionsItemSelected(item)
             }
         }
-
-    private fun replaceFragment(fragment: Fragment){
-        val trans = supportFragmentManager.beginTransaction()
-        trans.replace(R.id.fragemento_contenedor, fragment)
-        trans.addToBackStack(null)
-        trans.commit()
-    }
+        // Funcion que te levanta el fragment que se pasa por parametro
+        private fun replaceFragment(fragment: Fragment){
+            val trans = supportFragmentManager.beginTransaction()
+            trans.replace(R.id.fragemento_contenedor, fragment)
+            trans.addToBackStack(null)
+            trans.commit()
+        }
         override fun onCreateOptionsMenu(menu: Menu): Boolean {
             val inflater: MenuInflater = menuInflater
             inflater.inflate(R.menu.menu_superior, menu)

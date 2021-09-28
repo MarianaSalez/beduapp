@@ -27,12 +27,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+        //cargo los datos del login
         mail= findViewById(R.id.editTextEmail)
         pass = findViewById(R.id.editPassword)
         registro = findViewById(R.id.registro)
         inicio = findViewById(R.id.inicio)
 
-
+        //valido que los datos del login no encuentren vacios, limitando el tipo de entrado
         fun validarForm(): Boolean {
             var esValido = true
 
@@ -49,6 +50,7 @@ class MainActivity : AppCompatActivity() {
             return esValido
         }
 
+        // Si se selecciona el boton de inciar seccion, se valida los datos y si estan correcto se redireccionan al Activity Shop
         inicio.setOnClickListener{
 
             if(validarForm()){
@@ -57,6 +59,7 @@ class MainActivity : AppCompatActivity() {
 
         }
 
+        // Si se selecciona el registro te envia al Activity de Registrar
         registro.setOnClickListener{
             val intent=Intent(this, Registrar::class.java).apply {  }
             startActivity(intent)}

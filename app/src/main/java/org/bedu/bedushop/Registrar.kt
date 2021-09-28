@@ -31,6 +31,7 @@ class Registrar : AppCompatActivity() {
 
         registro = findViewById(R.id.btnRegistrar)
 
+        // Funcion que valida los datos del formulario de registro
         fun validarForm(): Boolean {
             var esValido = true
 
@@ -57,8 +58,7 @@ class Registrar : AppCompatActivity() {
             return esValido
         }
 
-
-
+        // Boton de registrar, valida el formulario y te envia el Inicio de Seccion
         registro.setOnClickListener{
 
             if(validarForm()){

@@ -28,6 +28,7 @@ class DetailFragment: Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_detail, container, false)
 
+        // Datos que se cargan al View del Detalle
         tvProduct = view.findViewById(R.id.tvProduct)
         tvDescription = view.findViewById(R.id.tvDescription)
         rbRate = view.findViewById(R.id.rbRate)
@@ -36,12 +37,14 @@ class DetailFragment: Fragment() {
         tvCuotas = view.findViewById(R.id.tvCuotas)
         tvNumOpinions = view.findViewById(R.id.tvNumOpinions)
 
+        //Funcion que te escrolea SOLO EL DETALLE
         tvDescription.movementMethod = ScrollingMovementMethod()
 
 
         return view
     }
 
+    // Funcion que carga los datos del producto en la pantalla del Detalle
     fun showProduct(product: Product){
 
         view?.visibility = View.VISIBLE

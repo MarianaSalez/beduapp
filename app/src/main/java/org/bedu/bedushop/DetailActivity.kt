@@ -26,6 +26,8 @@ class DetailActivity : AppCompatActivity() {
 
         }
 
+        //Al seleccionar el boton de "Agregar al Carrito " se redirecciona al Activity de Shop, ingresando al fragmente de Carrito
+        // Te redirecciona porque le pasamos como valor de origen "DETAIL"
         addBoton = findViewById(R.id.addCarrito)
         addBoton.setOnClickListener{
             val intent= Intent(this, Shop::class.java).apply {  }
