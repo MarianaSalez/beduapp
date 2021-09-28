@@ -17,22 +17,42 @@ import androidx.core.content.ContextCompat.startActivity
 
 class Shop : AppCompatActivity() {
 
-    private lateinit var usuarioFragment: UsuarioFragment
-    private lateinit var listaFragment: ListadoFragment
-    private lateinit var carritoFragment: CarritoFragment
+    private  var usuarioFragment= UsuarioFragment()
+    private  var listaFragment= ListadoFragment()
+    private  var carritoFragment= CarritoFragment()
     private lateinit var menuSuperior: Menu
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_shop)
-    }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        val inflater: MenuInflater = menuInflater
-        inflater.inflate(R.menu.menu_superior, menu)
-        return true
-    }
 
+        replaceFragment(listaFragment)
+
+        val bottomNavigation = findViewById<BottomNavigationView>(R.id.bottom_navigation)
+        bottomNavigation.setOnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.menu_carrito -> {
+                    replaceFragment(carritoFragment)
+                    true
+                }
+
+                R.id.menu_usuario -> {
+                    replaceFragment(usuarioFragment)
+                    true
+                }
+                R.id.ic_inicio -> {
+                    replaceFragment(listaFragment)
+                    true
+                }
+                else -> {
+                    false
+                }
+            }
+
+
+        }
+    }
         override fun onOptionsItemSelected(item: MenuItem): Boolean {
             // Handle item selection
             return when (item.itemId) {
@@ -51,4 +71,15 @@ class Shop : AppCompatActivity() {
             }
         }
 
+    private fun replaceFragment(fragment: Fragment){
+        val trans = supportFragmentManager.beginTransaction()
+        trans.replace(R.id.fragemento_contenedor, fragment)
+        trans.addToBackStack(null)
+        trans.commit()
+    }
+        override fun onCreateOptionsMenu(menu: Menu): Boolean {
+            val inflater: MenuInflater = menuInflater
+            inflater.inflate(R.menu.menu_superior, menu)
+            return true
+        }
 }
