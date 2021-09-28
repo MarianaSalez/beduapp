@@ -6,9 +6,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Shop">
-    <fragment
-        android:id="@+id/fragmentList"
-        class="org.bedu.bedushop.ListadoFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+  <fragment
+      android:id="@+id/fragmentDetail"
+      class="org.bedu.bedushop.DetailFragment"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent" />
+
 </LinearLayout>

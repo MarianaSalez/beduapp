@@ -26,9 +26,10 @@ class Shop : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_shop)
 
-
+        /*Inicializa listadoFragment*/
         replaceFragment(listaFragment)
 
+        /*Controlador del navegador*/
         val bottomNavigation = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         bottomNavigation.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
@@ -49,8 +50,21 @@ class Shop : AppCompatActivity() {
                     false
                 }
             }
+        }
 
+        /*Iniciar actividad Detail*/
 
+        listaFragment.setListener{
+            val detailFragment = supportFragmentManager.findFragmentById(R.id.fragmentDetail) as? DetailFragment
+
+            // Pantalla grande, mostrar detalle en el fragment
+            if(detailFragment!=null){
+                detailFragment.showProduct(it)
+            } else{ //pantalla pequeña, navegar a un nuevo Activity
+                val intent = Intent(this, DetailActivity::class.java)
+                intent.putExtra(DetailActivity.PRODUCT,it)
+                startActivity(intent)
+            }
         }
     }
         override fun onOptionsItemSelected(item: MenuItem): Boolean {

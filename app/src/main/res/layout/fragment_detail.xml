@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/productDetail"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    >
 
 
     <TextView
@@ -14,13 +15,13 @@
         android:layout_marginTop="30dp"
         android:text="@string/statusNew"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/productName"
+        app:layout_constraintBottom_toTopOf="@+id/tvProduct"
         app:layout_constraintLeft_toRightOf="@+id/guideline4"
         app:layout_constraintTop_toTopOf="parent"
-         />
+        />
 
     <TextView
-        android:id="@+id/productName"
+        android:id="@+id/tvProduct"
         android:layout_width="175dp"
         android:layout_height="41dp"
         android:layout_marginTop="70dp"
@@ -37,10 +38,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         app:layout_constraintLeft_toRightOf="@+id/guideline4"
-        app:layout_constraintTop_toBottomOf="@+id/productName" />
+        app:layout_constraintTop_toBottomOf="@+id/tvProduct" />
 
     <TextView
-        android:id="@+id/numOpinions"
+        android:id="@+id/tvNumOpinions"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -49,7 +50,7 @@
         android:textSize="12sp"
         android:textStyle="bold"
         app:layout_constraintLeft_toRightOf="@+id/rbRate"
-        app:layout_constraintTop_toBottomOf="@+id/productName" /> />
+        app:layout_constraintTop_toBottomOf="@+id/tvProduct" />
     <ImageView
         android:id="@+id/imgProduct"
         android:layout_width="wrap_content"
@@ -61,7 +62,7 @@
         app:layout_constraintTop_toBottomOf="@+id/rbRate" />
 
     <TextView
-        android:id="@+id/priceProduct"
+        android:id="@+id/tvPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
@@ -80,19 +81,19 @@
         android:textSize="18dp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/guideline4"
-        app:layout_constraintTop_toBottomOf="@+id/priceProduct" />
+        app:layout_constraintTop_toBottomOf="@+id/tvPrice" />
 
     <TextView
-        android:id="@+id/sixMonthPrice"
+        android:id="@+id/tvCuotas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="10dp"
         android:text="$15"
         android:textSize="18dp"
         android:textStyle="bold"
         app:layout_constraintLeft_toRightOf="@+id/sixMonth"
-        app:layout_constraintTop_toBottomOf="@+id/priceProduct" />
+        app:layout_constraintTop_toBottomOf="@+id/tvPrice" />
 
     <TextView
         android:id="@+id/DispDom"
@@ -127,7 +128,7 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline6"
         app:layout_constraintStart_toStartOf="@+id/guideline4"
         app:layout_constraintTop_toBottomOf="@+id/imgProduct"
-         />
+        />
 
     <TextView
         android:id="@+id/descriptionTitle"
@@ -138,19 +139,20 @@
         app:layout_constraintStart_toStartOf="@+id/guideline4"
         app:layout_constraintTop_toBottomOf="@+id/addCarrito" />
 
+
     <TextView
-        android:id="@+id/descriptionProduct"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:id="@+id/tvDescription"
+        android:layout_width="330dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="8dp"
         android:text="You perfect pack.."
+        android:layout_gravity="center_horizontal|center"
+        app:layout_constraintBottom_toTopOf="@+id/guideline5"
+        app:layout_constraintEnd_toStartOf="@+id/guideline6"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline4"
-        app:layout_constraintTop_toBottomOf="@+id/descriptionTitle" />
-
-
-
-
-
+        app:layout_constraintTop_toBottomOf="@+id/descriptionTitle"
+        app:layout_constraintVertical_bias="0.0" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline4"
@@ -172,7 +174,6 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.9" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

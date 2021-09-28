@@ -1,5 +1,5 @@
 <resources>
-    
+
 //Strings para la pantalla de inicio de sesion
     <string name="app_name">Bedu shop</string>
     <string name="inicioSesion"> INICIAR SESIÓN</string>
@@ -31,7 +31,7 @@
     <string name="AgregarCarrito">AGREGAR AL CARRITO</string>
     <string name="description">Descripción</string>
 
-//Strings para menu inferior   
+//Strings para menu inferior
 
     <string name="page_title">BEDU SHOP</string>
     <string name="help">Ayuda</string>

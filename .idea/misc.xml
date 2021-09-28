@@ -3,9 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Mariana/AndroidStudioProjects/BEDUSHOP3/app/src/main/res/drawable-v24/candado.xml" value="0.19010416666666666" />
-        <entry key="..\:/Users/Mariana/AndroidStudioProjects/BEDUSHOP3/app/src/main/res/layout/activity_login.xml" value="0.22" />
-        <entry key="..\:/Users/Mariana/AndroidStudioProjects/BEDUSHOP3/app/src/main/res/layout/activity_main.xml" value="0.17395833333333333" />
+        <entry key="..\:/Repo Bedu Final/beduapp/app/src/main/res/layout/activity_detail.xml" value="0.18009118541033434" />
+        <entry key="..\:/Repo Bedu Final/beduapp/app/src/main/res/layout/activity_login.xml" value="0.36666666666666664" />
+        <entry key="..\:/Repo Bedu Final/beduapp/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
+        <entry key="..\:/Repo Bedu Final/beduapp/app/src/main/res/layout/activity_registrar.xml" value="0.36666666666666664" />
+        <entry key="..\:/Repo Bedu Final/beduapp/app/src/main/res/layout/activity_shop.xml" value="0.1" />
+        <entry key="..\:/Repo Bedu Final/beduapp/app/src/main/res/layout/detail_product.xml" value="0.33" />
+        <entry key="..\:/Repo Bedu Final/beduapp/app/src/main/res/layout/fragment_carrito.xml" value="0.35260416666666666" />
+        <entry key="..\:/Repo Bedu Final/beduapp/app/src/main/res/layout/fragment_detail.xml" value="0.18009118541033434" />
+        <entry key="..\:/Repo Bedu Final/beduapp/app/src/main/res/layout/fragment_listado.xml" value="0.1" />
+        <entry key="..\:/Repo Bedu Final/beduapp/app/src/main/res/layout/fragment_recycler.xml" value="0.10055724417426545" />
+        <entry key="..\:/Repo Bedu Final/beduapp/app/src/main/res/layout/fragment_usuario.xml" value="0.35260416666666666" />
+        <entry key="..\:/Repo Bedu Final/beduapp/app/src/main/res/layout/item_contact.xml" value="0.33" />
       </map>
     </option>
   </component>
