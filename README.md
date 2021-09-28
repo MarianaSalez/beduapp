@@ -33,6 +33,7 @@ Se utilizaron dependencias:
 * Jetpack para el uso de safeargs
 * Material designs
 * Dependencias para el inicio de sesion con Google
+* Gestion de Imagenes con Picasso
 
 ## EJECUCION DE LA APP ⚙️
 <div align="center"><img src="images/giftFuncionalidad.gif" width="60%"></div>
