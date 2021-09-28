@@ -5,9 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.Toast
-import androidx.navigation.fragment.findNavController
+
 
 
 class UsuarioFragment : Fragment() {
@@ -20,20 +18,5 @@ class UsuarioFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_usuario, container, false)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
 
-        val buttonUsuario = view.findViewById<Button>(R.id.menu_usuario)
-        buttonUsuario?.setOnClickListener {
-            Toast.makeText(requireContext(),"Usuario", Toast.LENGTH_SHORT).show()
-        }
-        val buttonCarrito = view.findViewById<Button>(R.id.menu_carrito)
-        buttonCarrito?.setOnClickListener {
-            Toast.makeText(requireContext(),"Carrito",Toast.LENGTH_SHORT).show()
-        }
-        val buttonListado = view.findViewById<Button>(R.id.ic_inicio)
-        buttonListado?.setOnClickListener {
-            Toast.makeText(requireContext(),"Listado",Toast.LENGTH_SHORT).show()
-        }
-    }
 }
