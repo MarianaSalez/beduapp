@@ -36,6 +36,6 @@ Se utilizaron dependencias:
 * Gestion de Imagenes con Picasso
 
 ## EJECUCION DE LA APP ⚙️
-<div align="center"><img src="images/giftFuncionalidad.gif" width="60%"></div>
+<div align="center"><img src="images/giftFuncionalidad.gif" width="50%" ></div>
 
 
