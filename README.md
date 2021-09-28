@@ -5,7 +5,7 @@ _Este es un proyecto desarrollado dentro del curso 'Desarrollo Móvil Kotlin, im
 ## OBJETIVO 💼
 
 _La app desarrollada consiste en un e-commerce. Es un proyecto que se encuentra en develompemnt, actualmente con datos ficticios de productos, 
-sin acceso a base da datos asincronica. En la misma se accede a una pantalla de inicio de sesióm, se puede rehistrar el usuario, visiualizar una lista de productos 
+sin acceso a base da datos asincronica. En la misma se accede a una pantalla de inicio de sesióm, se puede registrar el usuario, visiualizar una lista de productos 
 y  añadirlos a un carrito de compras.
 _
 
