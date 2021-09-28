@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <style name="Theme.BEDUSHOP" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.BEDUSHOP.dark" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/dbackgroundNegro</item>
         <item name="colorPrimaryVariant">@color/dbackgroundNegro</item>
