@@ -21,6 +21,7 @@ class DetailFragment: Fragment() {
     private lateinit var tvCuotas : TextView
     private lateinit var tvNumOpinions : TextView
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

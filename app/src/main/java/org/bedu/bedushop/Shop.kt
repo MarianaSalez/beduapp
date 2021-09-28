@@ -26,8 +26,16 @@ class Shop : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_shop)
 
-        /*Inicializa listadoFragment*/
-        replaceFragment(listaFragment)
+        /*Inicializa frament segun su origen*/
+        val origen : String = intent.getStringExtra("origen").toString()
+        if(origen == "DETAIL"){
+            replaceFragment(carritoFragment)
+            Toast.makeText(this, "Producto Agregado", Toast.LENGTH_SHORT).show()
+        }
+        else{
+            replaceFragment(listaFragment)
+        }
+
 
         /*Controlador del navegador*/
         val bottomNavigation = findViewById<BottomNavigationView>(R.id.bottom_navigation)
@@ -66,6 +74,8 @@ class Shop : AppCompatActivity() {
                 startActivity(intent)
             }
         }
+
+
     }
         override fun onOptionsItemSelected(item: MenuItem): Boolean {
             // Handle item selection
