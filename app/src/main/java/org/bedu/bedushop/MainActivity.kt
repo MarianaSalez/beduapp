@@ -49,8 +49,6 @@ class MainActivity : AppCompatActivity() {
             return esValido
         }
 
-
-
         inicio.setOnClickListener{
 
             if(validarForm()){
@@ -63,48 +61,6 @@ class MainActivity : AppCompatActivity() {
             val intent=Intent(this, Registrar::class.java).apply {  }
             startActivity(intent)}
 
-
-
-
-       /*
-//Verificacion de que no este vacios los input
-        fun validarForm(): Boolean {
-            var esValido = true
-
-            if (TextUtils.isEmpty(mail.text.toString())) {
-                // Si la propiedad error tiene valor, se muestra el aviso.
-                mail.error = "Correo requerido"
-                esValido = false
-            } else mail.error = null
-
-            if (TextUtils.isEmpty(pass.text.toString())) {
-                pass.error = "Contraseña requerida"
-                esValido = false
-            } else pass.error = null
-
-            return esValido
-        }
-
-        inicio.setOnClickListener{
-            if(validarForm()){
-                Toast.makeText(this, "Inicio de Sesión exitoso", Toast.LENGTH_SHORT).show()
-            }
-        }
-
-
-
-
-
-        inicio.setOnClickListener {
-            if (mail.equals("")) {
-                validarMail.visibility = View.VISIBLE
-            } else if (pass.equals("")) {
-                validarPass.visibility = View.VISIBLE
-            } else {
-                Toast.makeText(this, "Inicio de Sesion correcto", Toast.LENGTH_SHORT).show()
-
-            }
-        }*/
     }
 }
 

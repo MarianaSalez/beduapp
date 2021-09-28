@@ -69,45 +69,4 @@ class Registrar : AppCompatActivity() {
 
 }
 
-/*
-    //Para el boton de google
 
-    var gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-        .requestEmail()
-        .build()
-    SignInButton signInButton = findViewById(R.id.sign_in_button)
-    signInButton.setSize(SignInButton.SIZE_STANDARD)
-    findViewById(R.id.sign_in_button).setOnClickListener(this);
-    fun onClick(v: View) {
-        when (v.getId()) {
-            R.id.sign_in_button -> signIn()
-        }
-    }
-    private fun signIn() {
-        val signInIntent: Intent = mGoogleSignInClient.getSignInIntent()
-        startActivityForResult(signInIntent, RC_SIGN_IN)
-    }
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        // Result returned from launching the Intent from GoogleSignInClient.getSignInIntent(...);
-        if (requestCode == RC_SIGN_IN) {
-            // The Task returned from this call is always completed, no need to attach
-            // a listener.
-            val task: Task<GoogleSignInAccount> = GoogleSignIn.getSignedInAccountFromIntent(data)
-            handleSignInResult(task)
-        }
-        private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
-            try {
-                GoogleSignInAccount account = completedTask.getResult(ApiException.class);
-
-                // Signed in successfully, show authenticated UI.
-                updateUI(account);
-            } catch (ApiException e) {
-                // The ApiException status code indicates the detailed failure reason.
-                // Please refer to the GoogleSignInStatusCodes class reference for more information.
-                Log.w(TAG, "signInResult:failed code=" + e.getStatusCode());
-                updateUI(null);
-            }
-        }
-    }*/
