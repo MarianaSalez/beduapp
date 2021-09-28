@@ -35,6 +35,6 @@ Se utilizaron dependencias:
 * Dependencias para el inicio de sesion con Google
 
 ## EJECUCION DE LA APP ⚙️
-
+<div align="center"><img src="giftFuncionalidad.gif" width="60%"></div>
 
 
