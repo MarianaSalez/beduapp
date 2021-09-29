@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/productDetail"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
+    android:id="@+id/productDetail"
+    tools:context=".DetailActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
 
 
     <TextView
@@ -78,7 +84,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="@string/sixMonth"
-        android:textSize="18dp"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/guideline4"
         app:layout_constraintTop_toBottomOf="@+id/tvPrice" />
@@ -90,7 +96,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="10dp"
         android:text="$15"
-        android:textSize="18dp"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintLeft_toRightOf="@+id/sixMonth"
         app:layout_constraintTop_toBottomOf="@+id/tvPrice" />
@@ -113,7 +119,7 @@
         android:layout_marginTop="10dp"
         android:text="@string/entrega"
         android:drawableLeft="@drawable/ic_car"
-        android:textSize="18dp"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/guideline4"
         app:layout_constraintTop_toBottomOf="@+id/DispDom" />
 
@@ -122,13 +128,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="10dp"
         android:text="@string/AgregarCarrito"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline6"
         app:layout_constraintStart_toStartOf="@+id/guideline4"
-        app:layout_constraintTop_toBottomOf="@+id/imgProduct"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/entregaTomorrow"
+       />
 
     <TextView
         android:id="@+id/descriptionTitle"
@@ -142,8 +147,8 @@
 
     <TextView
         android:id="@+id/tvDescription"
-        android:layout_width="330dp"
-        android:layout_height="60dp"
+        android:layout_width="310dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="You perfect pack.."
         android:layout_gravity="center_horizontal|center"
@@ -175,5 +180,5 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.9" />
 
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
