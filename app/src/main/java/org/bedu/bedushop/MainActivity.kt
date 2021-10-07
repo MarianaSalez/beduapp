@@ -29,16 +29,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-
-        //! TRANSITIONS A MEJORAR
-        val transitionXml = TransitionInflater.from(this).inflateTransition(R.transition.login).apply {
+        //! TRANSITIONS A MEJORAR(SOLVED)
+       /* val transitionXml = TransitionInflater.from(this).inflateTransition(R.transition.login).apply {
             excludeTarget(window.decorView.findViewById<View>(R.id.action_bar_container), true)
             excludeTarget(android.R.id.statusBarBackground, true)
             excludeTarget(android.R.id.navigationBarBackground, true)
         }
         window.exitTransition = transitionXml
-
-        //! TRANSITIONS A MEJORAR
+        //! TRANSITIONS A MEJORAR*/
 
         //cargo los datos del login
         mail= findViewById(R.id.editTextEmail)
@@ -69,14 +67,20 @@ class MainActivity : AppCompatActivity() {
             if(validarForm()){
                 val intent=Intent(this, Shop::class.java).apply {  }
                 startActivity(intent)}
-
+            overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left)
         }
 
         // Si se selecciona el registro te envia al Activity de Registrar
         registro.setOnClickListener{
             val intent=Intent(this, Registrar::class.java).apply {  }
-            startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle())}
+            startActivity(intent)
+        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left)
+        }
 
     }
-}
 
+    override fun finish() {
+        super.finish()
+        overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right)
+    }
+}

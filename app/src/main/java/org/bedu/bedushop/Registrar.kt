@@ -30,7 +30,7 @@ class Registrar : AppCompatActivity() {
         setContentView(R.layout.activity_registrar)
 
 
-        //! TRANSITIONS A MEJORAR
+       /* //! TRANSITIONS A MEJORAR(SOLVED)
         val transitionXml = TransitionInflater.from(this).inflateTransition(R.transition.login).apply {
             excludeTarget(window.decorView.findViewById<View>(R.id.action_bar_container), true)
             excludeTarget(android.R.id.statusBarBackground, true)
@@ -47,7 +47,7 @@ class Registrar : AppCompatActivity() {
 
         window.enterTransition = transition
 
-        //! TRANSITIONS A MEJORAR
+        //! TRANSITIONS A MEJORAR*/
 
         name= findViewById(R.id.completeNameR)
         mail= findViewById(R.id.editTextEmailR)
@@ -88,10 +88,15 @@ class Registrar : AppCompatActivity() {
 
             if(validarForm()){
                 val intent=Intent(this, MainActivity::class.java).apply {  }
-                startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle())}
+                startActivity(intent)
+                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left)
+            }
             }
         }
-
+    override fun finish() {
+        super.finish()
+        overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right)
+    }
 }
 
 
