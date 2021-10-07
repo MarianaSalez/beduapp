@@ -1,11 +1,13 @@
 package org.bedu.bedushop
 
+import android.app.ActivityOptions
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Parcel
 import android.os.Parcelable
 import android.text.TextUtils
+import android.transition.TransitionInflater
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
@@ -26,6 +28,17 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
+
+        //! TRANSITIONS A MEJORAR
+        val transitionXml = TransitionInflater.from(this).inflateTransition(R.transition.login).apply {
+            excludeTarget(window.decorView.findViewById<View>(R.id.action_bar_container), true)
+            excludeTarget(android.R.id.statusBarBackground, true)
+            excludeTarget(android.R.id.navigationBarBackground, true)
+        }
+        window.exitTransition = transitionXml
+
+        //! TRANSITIONS A MEJORAR
 
         //cargo los datos del login
         mail= findViewById(R.id.editTextEmail)
@@ -62,7 +75,7 @@ class MainActivity : AppCompatActivity() {
         // Si se selecciona el registro te envia al Activity de Registrar
         registro.setOnClickListener{
             val intent=Intent(this, Registrar::class.java).apply {  }
-            startActivity(intent)}
+            startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle())}
 
     }
 }

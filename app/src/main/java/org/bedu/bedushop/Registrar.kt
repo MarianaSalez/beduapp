@@ -1,11 +1,16 @@
 package org.bedu.bedushop
 
+import android.app.ActivityOptions
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import androidx.core.app.ActivityCompat.startActivityForResult
 import android.content.Intent
 import android.text.TextUtils
+import android.transition.Slide
+import android.transition.TransitionInflater
+import android.view.Gravity
+import android.view.View
 import android.widget.Button
 import android.widget.Toast
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
@@ -23,6 +28,26 @@ class Registrar : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registrar)
+
+
+        //! TRANSITIONS A MEJORAR
+        val transitionXml = TransitionInflater.from(this).inflateTransition(R.transition.login).apply {
+            excludeTarget(window.decorView.findViewById<View>(R.id.action_bar_container), true)
+            excludeTarget(android.R.id.statusBarBackground, true)
+            excludeTarget(android.R.id.navigationBarBackground, true)
+        }
+        window.exitTransition = transitionXml
+
+        val transition = Slide(Gravity.RIGHT).apply {
+            duration = 200
+            excludeTarget(window.decorView.findViewById<View>(R.id.action_bar_container), true)
+            excludeTarget(android.R.id.statusBarBackground, true)
+            excludeTarget(android.R.id.navigationBarBackground, true)
+        }
+
+        window.enterTransition = transition
+
+        //! TRANSITIONS A MEJORAR
 
         name= findViewById(R.id.completeNameR)
         mail= findViewById(R.id.editTextEmailR)
@@ -63,7 +88,7 @@ class Registrar : AppCompatActivity() {
 
             if(validarForm()){
                 val intent=Intent(this, MainActivity::class.java).apply {  }
-                startActivity(intent)}
+                startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle())}
             }
         }
 

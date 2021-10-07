@@ -6,7 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".UsuarioFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/recyclerProduct"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/recycler_perfil"
+        />
+
+<!--
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -42,7 +51,7 @@
             app:layout_constraintGuide_begin="371dp" />
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout> -->
 
 
 </FrameLayout>

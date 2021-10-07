@@ -2,16 +2,18 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-android:background="@color/backgroundNegro"
-android:orientation="vertical"
-tools:layout_editor_absoluteX="1dp"
-tools:layout_editor_absoluteY="1dp"
-tools:context=".MainActivity"
-    tools:ignore="ExtraText">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundNegro"
+    android:orientation="vertical"
+    tools:layout_editor_absoluteX="1dp"
+    tools:layout_editor_absoluteY="1dp"
+    tools:context=".MainActivity"
+    tools:ignore="ExtraText"
+    android:id="@+id/loginLayout"
+    >
 
     //logo Imagen y texto
 
@@ -23,24 +25,24 @@ tools:context=".MainActivity"
         android:layout_weight="1"
         android:scaleType="fitEnd"
         app:srcCompat="@drawable/logo_bedu"
-       />
+        />
 
     <TextView
-    android:id="@+id/appName"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/backgroundNegro"
-    android:text="@string/app_name"
-    android:textAlignment="center"
-    android:textColor="@color/NaranjaBedu"
-    android:textSize="34sp"
-    android:textStyle="bold"
-    android:layout_marginBottom="90dp"
-    tools:visibility="visible" />
+        android:id="@+id/appName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/backgroundNegro"
+        android:text="@string/app_name"
+        android:textAlignment="center"
+        android:textColor="@color/NaranjaBedu"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="90dp"
+        tools:visibility="visible" />
 
 
 
-//Inputs mail y contraseña
+    //Inputs mail y contraseña
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/emailAddress"
@@ -144,25 +146,25 @@ tools:context=".MainActivity"
       android:layout_gravity="center"
       android:text="@string/passIncorrecto"/>-->
 
-//Botones de Inicio de Sesión y registo
-<Button
-    android:id="@+id/inicio"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center"
-    android:backgroundTint="@color/NaranjaBedu"
-    android:text="@string/inicioSesion"
-    android:textColor="@color/blanco"
-    />
+    //Botones de Inicio de Sesión y registo
+    <Button
+        android:id="@+id/inicio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:backgroundTint="@color/NaranjaBedu"
+        android:text="@string/inicioSesion"
+        android:textColor="@color/blanco"
+        />
 
 
-<Button
-    android:id="@+id/registro"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="@string/registro"
-    android:backgroundTint="@color/backgroundNegro"
-    android:textColor="@color/blanco"
-    android:layout_marginBottom="110dp"/>
+    <Button
+        android:id="@+id/registro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/registro"
+        android:backgroundTint="@color/backgroundNegro"
+        android:textColor="@color/blanco"
+        android:layout_marginBottom="110dp"/>
 
 </LinearLayout>
