@@ -32,7 +32,7 @@ class Shop : AppCompatActivity() {
 
 
         //!! Transition sin terminar para el detail
-        val transitionXml = TransitionInflater.from(this).inflateTransition(R.transition.descripcion).apply {
+       val transitionXml = TransitionInflater.from(this).inflateTransition(R.transition.descripcion).apply {
             excludeTarget(window.decorView.findViewById<View>(R.id.action_bar_container), true)
             excludeTarget(android.R.id.statusBarBackground, true)
             excludeTarget(android.R.id.navigationBarBackground, true)
@@ -91,12 +91,12 @@ class Shop : AppCompatActivity() {
                 intent.putExtra(DetailActivity.PRODUCT,it)
 
                 //!! Transition sin terminar para el detail
-                /*
-                EN ESTA SECCION PROBE DE USAR SHARED TRANSITION PERO NO ME GUSTO EL RESULTADO, PREGUNTAR A JAVI
 
-                val options = ViewCompat.getTransitionName(findViewById(R.id.transitioned))?.let {
+               // EN ESTA SECCION PROBE DE USAR SHARED TRANSITION PERO NO ME GUSTO EL RESULTADO, PREGUNTAR A JAVI
+
+               /* val options = ViewCompat.getTransitionName(findViewById(R.id.cardviewLista))?.let {
                     ActivityOptionsCompat.makeSceneTransitionAnimation(
-                        this, findViewById(R.id.transitioned), it
+                        this, findViewById(R.id.cardviewLista), it
                     )
                 }*/
 
