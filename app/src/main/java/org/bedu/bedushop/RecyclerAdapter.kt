@@ -8,12 +8,13 @@ import android.widget.TextView
 import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
+import org.bedu.bedushop.Opciones
 import org.bedu.bedushop.Product
 import org.bedu.bedushop.R
 
 //Declaración con constructor
 class RecyclerAdapter(
-    private val context:Context,
+    private val context: Context,
     private val products: MutableList<Product>,
     private val clickListener: (Product) -> Unit): RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
 

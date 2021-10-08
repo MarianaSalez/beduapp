@@ -22,6 +22,7 @@
 
     <fade
         android:duration="300"
+        android:startDelay="400"
         android:fadingMode="fade_out">
         <targets>
             <target android:targetId="@id/recyclerProducts"/>
