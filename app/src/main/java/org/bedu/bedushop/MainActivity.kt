@@ -11,11 +11,9 @@ import android.text.TextUtils
 import android.transition.TransitionInflater
 import android.util.Log
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.core.view.isEmpty
+import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 import com.squareup.picasso.Picasso
 import okhttp3.Callback
@@ -39,7 +37,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var pass: TextInputEditText
     private lateinit var registro: Button
     private lateinit var inicio: Button
-
+    private lateinit var layout: LinearLayout
     //Flag para inicio sesión
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -62,7 +60,7 @@ class MainActivity : AppCompatActivity() {
         pass = findViewById(R.id.editPassword)
         registro = findViewById(R.id.registro)
         inicio = findViewById(R.id.inicio)
-
+        layout = findViewById(R.id.loginLayout)
 
         //Llamando datos de API Login y utilizandolos mediante booleano
         fun checkMail(email: String, pass: String): Boolean {
@@ -98,7 +96,9 @@ class MainActivity : AppCompatActivity() {
                 else{
                     flag = false
                     runOnUiThread {
-                        Toast.makeText( this, "Mail o contraseña incorrectos", Toast.LENGTH_SHORT).show()
+                        showSnackBar()
+
+                        //Toast.makeText( this, "Mail o contraseña incorrectos", Toast.LENGTH_SHORT).show()
                     }
 
                     return flag
@@ -120,12 +120,14 @@ class MainActivity : AppCompatActivity() {
             var esValido = true
 
             if (TextUtils.isEmpty(mail.getText())) {
-                mail.error = getString(R.string.error1)
+                loginSnackBar()
+                //mail.error = getString(R.string.error1)
                 esValido = false
             } else mail.error = null
 
             if (TextUtils.isEmpty(pass.getText())) {
-                pass.error = getString(R.string.error1)
+                loginSnackBar()
+                //pass.error = getString(R.string.error1)
                 esValido = false
             } else pass.error = null
 
@@ -201,6 +203,27 @@ class MainActivity : AppCompatActivity() {
             Log.e("Error",e.toString())
         }
         return user
+    }
+
+    //FUNCIONES PARA SNACKBARS
+
+    //snackbar en caso que el usuario sea incorrecto
+
+    fun showSnackBar(){
+        val snackbar: Snackbar = Snackbar.make(layout,"Usuario y/o contraseña invalido", Snackbar.LENGTH_SHORT)
+        snackbar.show()
+
+    }
+
+    //snackbar en caso que algun campo no se haya completado
+
+    fun loginSnackBar(){
+        val snackbar: Snackbar = Snackbar.make(layout,"Te falta llenar algun campo", Snackbar.LENGTH_INDEFINITE)
+            .setAction("ENTENDIDO", View.OnClickListener {
+                val snackBarUndo: Snackbar = Snackbar.make(layout, "Gracias",Snackbar.LENGTH_SHORT)
+               // snackBarUndo.show()
+            })
+        snackbar.show()
     }
 
 
