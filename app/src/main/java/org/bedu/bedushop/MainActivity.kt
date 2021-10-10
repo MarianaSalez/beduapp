@@ -6,8 +6,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Parcel
 import android.os.Parcelable
+import android.telecom.Call
 import android.text.TextUtils
 import android.transition.TransitionInflater
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
@@ -15,22 +17,39 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.core.view.isEmpty
 import com.google.android.material.textfield.TextInputEditText
+import com.squareup.picasso.Picasso
+import okhttp3.Callback
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import okhttp3.Response
+import java.io.IOException
+import okhttp3.FormBody
+import org.json.JSONObject
+import kotlin.random.Random
 
+//Variables globales para bundle
+const val USER_EMAIL = "org.bedu.bedushop.USER_EMAIL"
+const val USER_FULL_NAME = "org.bedu.bedushop.USER_FULL_NAME"
+const val USER_AVATAR = "org.bedu.bedushop.USER_AVATAR"
 
 class MainActivity : AppCompatActivity() {
 
+    private val baseUrl = "https://reqres.in/api/users/" //URL API
     private lateinit var mail:TextInputEditText
     private lateinit var pass: TextInputEditText
     private lateinit var registro: Button
     private lateinit var inicio: Button
 
+    //Flag para inicio sesión
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+        //TODO: Checkear como resetear logInFlag cuando se regrese a menú de logIn
+
         //! TRANSITIONS A MEJORAR(SOLVED)
-       /* val transitionXml = TransitionInflater.from(this).inflateTransition(R.transition.login).apply {
+        /* val transitionXml = TransitionInflater.from(this).inflateTransition(R.transition.login).apply {
             excludeTarget(window.decorView.findViewById<View>(R.id.action_bar_container), true)
             excludeTarget(android.R.id.statusBarBackground, true)
             excludeTarget(android.R.id.navigationBarBackground, true)
@@ -39,10 +58,62 @@ class MainActivity : AppCompatActivity() {
         //! TRANSITIONS A MEJORAR*/
 
         //cargo los datos del login
-        mail= findViewById(R.id.editTextEmail)
+        mail = findViewById(R.id.editTextEmail)
         pass = findViewById(R.id.editPassword)
         registro = findViewById(R.id.registro)
         inicio = findViewById(R.id.inicio)
+
+
+        //Llamando datos de API Login y utilizandolos mediante booleano
+        fun checkMail(email: String, pass: String): Boolean {
+
+            //instanciando al cliente
+            val okHttpClient = OkHttpClient()
+            val url = "https://reqres.in/api/login/"
+            var flag = false
+
+            //Instancio cuerpo del request para hacer POST
+            val formBody = FormBody.Builder()
+                .add("email", email)
+                .add("password", pass)
+                .build();
+
+            //El objeto Request contiene todos los parámetros de la petición (headers, url, method, body etc)
+            val request = Request.Builder()
+                .url(url)
+                .post(formBody)
+                .build()
+
+            //enviando y recibiendo las llamadas de forma sincrónica (Porque LogIn no debe iniciar sin previa respuesta)
+
+            try {
+                val response = okHttpClient.newCall(request).execute()
+                val body = response.body?.string()
+
+
+                val bodyObj = JSONObject(body)
+                if (!bodyObj.has("error")) {
+                    flag = true
+                }
+                else{
+                    flag = false
+                    runOnUiThread {
+                        Toast.makeText( this, "Mail o contraseña incorrectos", Toast.LENGTH_SHORT).show()
+                    }
+
+                    return flag
+                }
+            }
+            catch (e: Error) {
+                Log.d("Error", e.toString())
+                flag = false
+            }
+
+            return flag
+        }
+
+
+
 
         //valido que los datos del login no encuentren vacios, limitando el tipo de entrado
         fun validarForm(): Boolean {
@@ -65,8 +136,23 @@ class MainActivity : AppCompatActivity() {
         inicio.setOnClickListener{
 
             if(validarForm()){
-                val intent=Intent(this, Shop::class.java).apply {  }
-                startActivity(intent)}
+                //Inicio un nuevo Thread donde tendrá lugar la verificación con la API
+                Thread{
+                if(checkMail(mail.text.toString(), pass.text.toString())){
+                    var user = getUserData()
+                    Log.d("user getUserData", user.toString())
+                    val bundle = Bundle()//Creamos bundle con datos de usuario
+                    bundle.putString(USER_EMAIL, user?.email)
+                    bundle.putString(USER_FULL_NAME, "${user?.first_name} ${user?.last_name}")
+                    bundle.putString(USER_AVATAR, user?.avatar)
+                    val intent=Intent(this, Shop::class.java).apply {
+                        putExtras(bundle)//Enviamos bundle a activity shop
+                        Log.d("Bundle Login", bundle.toString())
+                    }
+                    startActivity(intent)
+                }
+                }.start()
+            }
             overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left)
         }
 
@@ -78,6 +164,45 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
+
+    //Obtenemos datos del usuario que corresponderán al perfil
+    fun getUserData():User?{
+
+        var user : User ?= null
+        //instanciando al cliente
+        val okHttpClient = OkHttpClient()
+
+        //obteniendo la url completa
+        val userId = Random.nextInt(1,12) //son 60 planetas
+        val url = "$baseUrl$userId"
+        Log.d("url: ", url)
+
+        val request =  Request.Builder()
+            .url(url)
+            .build()
+
+        try {
+            val response = okHttpClient.newCall(request).execute()
+            val body = response.body?.string()
+            val json = JSONObject(body)
+            val jsonStr = json.getString("data")
+            Log.d("data?: ", jsonStr.toString())
+            val jsonUser = JSONObject(jsonStr)
+            Log.d("data JSON?: ", jsonUser.toString())
+            val email = jsonUser.getString("email")
+            val name = jsonUser.getString("first_name")
+            val lastName = jsonUser.getString("last_name")
+            val avatar = jsonUser.getString("avatar")
+            user = User(userId, email, name, lastName, avatar)
+            Log.d("body: ", body.toString())
+            Log.d("user: ", user.toString())
+
+        } catch (e: Error){
+            Log.e("Error",e.toString())
+        }
+        return user
+    }
+
 
     override fun finish() {
         super.finish()

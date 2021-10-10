@@ -11,6 +11,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import android.content.Intent
 import android.net.Uri
 import android.transition.TransitionInflater
+import android.util.Log
 import android.view.*
 import android.widget.*
 import androidx.core.app.ActivityOptionsCompat
@@ -18,6 +19,10 @@ import androidx.core.content.ContextCompat.startActivity
 import androidx.core.view.ViewCompat
 import kotlinx.android.synthetic.main.recycler_perfil.*
 
+//Asignamos nuevas variables globales
+const val USER_EMAIL_SHOP = "org.bedu.bedushop.USER_EMAIL_SHOP"
+const val USER_FULL_NAME_SHOP = "org.bedu.bedushop.USER_FULL_NAME_SHOP"
+const val USER_AVATAR_SHOP = "org.bedu.bedushop.USER_AVATAR_SHOP"
 
 class Shop : AppCompatActivity() {
 
@@ -46,11 +51,12 @@ class Shop : AppCompatActivity() {
         * Se es por Inicio seccion o registrar o DETAIL*/
         val origen : String = intent.getStringExtra("origen").toString()
         if(origen == "DETAIL"){
-            replaceFragment(carritoFragment)
+            replaceFragment(carritoFragment, null)
+
             Toast.makeText(this, "Producto Agregado", Toast.LENGTH_SHORT).show()
         }
         else{
-            replaceFragment(listaFragment)
+            replaceFragment(listaFragment, null)
         }
 
 
@@ -60,16 +66,26 @@ class Shop : AppCompatActivity() {
         bottomNavigation.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.menu_carrito -> {
-                    replaceFragment(carritoFragment)
+                    replaceFragment(carritoFragment, null)
                     true
                 }
 
                 R.id.menu_usuario -> {
-                    replaceFragment(usuarioFragment)
+                    var bundle = intent.extras //Recuperamos datos de bundle
+                    val email = bundle?.getString(USER_EMAIL)
+                    val fullName = bundle?.getString(USER_FULL_NAME)
+                    val avatar = bundle?.getString(USER_AVATAR)
+
+                    var bundleFrag = Bundle()//Reasignamos datos de bundle
+                    bundleFrag.putString(USER_EMAIL_SHOP, email)
+                    bundleFrag.putString(USER_FULL_NAME_SHOP, fullName)
+                    bundleFrag.putString(USER_AVATAR_SHOP,avatar)
+                    Log.d("Bundle Shop", bundleFrag.toString())
+                    replaceFragment(usuarioFragment, bundleFrag)
                     true
                 }
                 R.id.ic_inicio -> {
-                    replaceFragment(listaFragment)
+                    replaceFragment(listaFragment, null)
                     true
                 }
                 else -> {
@@ -124,7 +140,8 @@ class Shop : AppCompatActivity() {
             }
         }
         // Funcion que te levanta el fragment que se pasa por parametro
-        private fun replaceFragment(fragment: Fragment){
+        private fun replaceFragment(fragment: Fragment, bundle:Bundle?){
+            fragment.arguments = bundle//Enviamos Bundle, de existir
             val trans = supportFragmentManager.beginTransaction()
             trans.replace(R.id.fragemento_contenedor, fragment)
             trans.addToBackStack(null)

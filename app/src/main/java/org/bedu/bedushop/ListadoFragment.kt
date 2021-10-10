@@ -1,6 +1,7 @@
 package org.bedu.bedushop
 
 import RecyclerAdapter
+
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -24,8 +25,8 @@ class ListadoFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_recycler, container, false)
+        // Inflate layout de fragment
+        return inflater.inflate(R.layout.fragment_recycler, container, false) //Apunta al fragmento que tiene el recyclerView
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
