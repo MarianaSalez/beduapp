@@ -43,7 +43,11 @@ class UsuarioFragment : Fragment() {
             Opciones("Pedidos", R.drawable.history,R.drawable.arrow),
             Opciones("Notificaciones", R.drawable.notificacion,R.drawable.arrow),
             Opciones("Cambiar contraseña", R.drawable.lock,R.drawable.arrow)
-        ))
+        )){
+            val bts : BottomSheetFragment = BottomSheetFragment()
+            if(it.opcion.toString() == "Mis direcciones"){
+            bts.show(parentFragmentManager,"fragment")}
+        }
 
         txtUser = view.findViewById(R.id.namePerfil)
         txtEmail = view.findViewById(R.id.emailPerfil)

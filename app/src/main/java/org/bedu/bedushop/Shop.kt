@@ -17,6 +17,8 @@ import android.widget.*
 import androidx.core.app.ActivityOptionsCompat
 import androidx.core.content.ContextCompat.startActivity
 import androidx.core.view.ViewCompat
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 import kotlinx.android.synthetic.main.recycler_perfil.*
 
 //Asignamos nuevas variables globales
