@@ -60,26 +60,17 @@ class Registrar : AppCompatActivity() {
         fun validarForm(): Boolean {
             var esValido = true
 
-            if (TextUtils.isEmpty(name.getText())) {
-                name.error = getString(R.string.requerido)
+            fun validarDato(var1:TextInputEditText) {
+                if (TextUtils.isEmpty(var1.getText())) {
+                var1.error = getString(R.string.requerido)
                 esValido = false
-            } else name.error = null
+            } else var1.error = null
+            }
 
-            if (TextUtils.isEmpty(mail.getText())) {
-                mail.error = getString(R.string.requerido)
-                esValido = false
-            } else mail.error = null
-
-            if (TextUtils.isEmpty(phone.getText())) {
-                phone.error = getString(R.string.requerido)
-                esValido = false
-            } else phone.error = null
-
-            if (TextUtils.isEmpty(pass.getText())) {
-                pass.error = getString(R.string.requerido)
-                esValido = false
-            } else pass.error = null
-
+            validarDato(name)
+            validarDato(mail)
+            validarDato(phone)
+            validarDato(pass)
             return esValido
         }
 
@@ -92,6 +83,8 @@ class Registrar : AppCompatActivity() {
                 overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left)
             }
             }
+
+
         }
     override fun finish() {
         super.finish()

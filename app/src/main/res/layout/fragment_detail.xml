@@ -77,7 +77,7 @@
         android:textStyle="bold"
         app:layout_constraintLeft_toRightOf="@+id/rbRate"
         app:layout_constraintTop_toBottomOf="@+id/tvProduct" />
-    <ImageView
+    <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/imgProduct"
         android:layout_width="wrap_content"
         android:layout_height="150dp"

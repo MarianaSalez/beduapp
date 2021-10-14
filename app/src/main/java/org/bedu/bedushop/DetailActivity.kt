@@ -8,6 +8,10 @@ import android.view.Gravity
 import android.view.Menu
 import android.view.View
 import android.widget.Button
+import android.widget.ImageView
+import com.airbnb.lottie.LottieAnimationView
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.runBlocking
 import org.bedu.bedushop.Product
 
 class DetailActivity : AppCompatActivity() {
@@ -16,11 +20,13 @@ class DetailActivity : AppCompatActivity() {
     }
     private lateinit var addBoton: Button
     private  var carritoFragment= CarritoFragment()
+    private lateinit var carroCompra: LottieAnimationView
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
+        carroCompra=findViewById(R.id.imgProduct)
 
 
 
@@ -48,6 +54,10 @@ class DetailActivity : AppCompatActivity() {
         // Te redirecciona porque le pasamos como valor de origen "DETAIL"
         addBoton = findViewById(R.id.addCarrito)
         addBoton.setOnClickListener{
+                runBlocking{
+                    animarCarrito(carroCompra,R.raw.carrito)
+                    delay(200)
+                }
             val intent= Intent(this, Shop::class.java).apply {  }
 
             //DATOS EXTRA
@@ -57,5 +67,11 @@ class DetailActivity : AppCompatActivity() {
 
         }
 
+    }
+
+    private fun animarCarrito(imageView: LottieAnimationView, animation:Int){
+        imageView.setAnimation(animation)
+        imageView.speed=0.2f
+        imageView.playAnimation()
     }
 }

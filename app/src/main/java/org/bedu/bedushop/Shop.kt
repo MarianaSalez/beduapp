@@ -1,5 +1,6 @@
 package org.bedu.bedushop
 
+import android.animation.AnimatorInflater
 import android.app.ActivityOptions
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
@@ -17,8 +18,10 @@ import android.widget.*
 import androidx.core.app.ActivityOptionsCompat
 import androidx.core.content.ContextCompat.startActivity
 import androidx.core.view.ViewCompat
+import androidx.core.view.isVisible
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
+import com.google.android.material.progressindicator.LinearProgressIndicator
 import kotlinx.android.synthetic.main.recycler_perfil.*
 
 //Asignamos nuevas variables globales
@@ -32,10 +35,12 @@ class Shop : AppCompatActivity() {
     private  var listaFragment= ListadoFragment()
     private  var carritoFragment= CarritoFragment()
     private lateinit var menuSuperior: Menu
+    private lateinit var progressBar: LinearProgressIndicator
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_shop)
+        progressBar=findViewById(R.id.loadingBar)
 
 
         //!! Transition sin terminar para el detail
@@ -65,14 +70,17 @@ class Shop : AppCompatActivity() {
         /*Controlador del navegador
         * Dependiendo lo que seleccione el usuario en el Bottom Nav te envia a dicho fragment*/
         val bottomNavigation = findViewById<BottomNavigationView>(R.id.bottom_navigation)
-        bottomNavigation.setOnNavigationItemSelectedListener { item ->
+        bottomNavigation.setOnNavigationItemSelectedListener {
+                item ->
             when (item.itemId) {
                 R.id.menu_carrito -> {
+                    loading(progressBar)
                     replaceFragment(carritoFragment, null)
                     true
                 }
 
                 R.id.menu_usuario -> {
+                    loading(progressBar)
                     var bundle = intent.extras //Recuperamos datos de bundle
                     val email = bundle?.getString(USER_EMAIL)
                     val fullName = bundle?.getString(USER_FULL_NAME)
@@ -87,6 +95,7 @@ class Shop : AppCompatActivity() {
                     true
                 }
                 R.id.ic_inicio -> {
+                    loading(progressBar)
                     replaceFragment(listaFragment, null)
                     true
                 }
@@ -94,6 +103,7 @@ class Shop : AppCompatActivity() {
                     false
                 }
             }
+
         }
 
         /*Iniciar actividad Detail*/
@@ -130,6 +140,7 @@ class Shop : AppCompatActivity() {
                 R.id.search -> {
                     Toast.makeText(this, "Función no disponible", Toast.LENGTH_SHORT).show()
                     true
+
                 }
                 R.id.help -> {
                     val url = "https://www.bedu.org"
@@ -154,4 +165,14 @@ class Shop : AppCompatActivity() {
             inflater.inflate(R.menu.menu_superior, menu)
             return true
         }
-}
+
+    //funcion para activar la barrita de loading en los diferentes fragments
+        private fun loading(progressBar: LinearProgressIndicator){
+            progressBar.isVisible=true
+            AnimatorInflater.loadAnimator(this, R.animator.loading_bar).apply {
+                setTarget(progressBar)
+                start()
+            }
+
+            }
+    }
