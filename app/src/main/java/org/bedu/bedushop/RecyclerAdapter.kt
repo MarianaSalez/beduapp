@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
+import io.realm.Realm
 import org.bedu.bedushop.Opciones
 import org.bedu.bedushop.Product
 import org.bedu.bedushop.R
@@ -15,11 +16,15 @@ import org.bedu.bedushop.R
 //Declaración con constructor
 class RecyclerAdapter(
     private val context: Context,
-    private val products: MutableList<Product>,
+    private var products: List<Product>,
     private val clickListener: (Product) -> Unit): RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
 
     //Aquí atamos el ViewHolder
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+
+        val realm = Realm.getDefaultInstance()
+        products = realm.where(Product::class.java).findAll()
+
         val product = products[position]
         holder.bind(product, context)
 
@@ -50,7 +55,7 @@ class RecyclerAdapter(
         fun bind(product: Product, context: Context){
             productName.text = product.name
             price.text = "$${product.price}"
-            ratingBar.rating = product.rating
+            ratingBar.rating = product.rate!!
             Picasso.with(context).load(product.idImage).into(image)
         }
     }

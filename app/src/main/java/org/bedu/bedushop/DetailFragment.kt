@@ -10,6 +10,7 @@ import android.widget.RatingBar
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.squareup.picasso.Picasso
+import io.realm.Realm
 import org.bedu.bedushop.Product
 
 class DetailFragment: Fragment() {
@@ -22,11 +23,14 @@ class DetailFragment: Fragment() {
     private lateinit var tvNumOpinions : TextView
 
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_detail, container, false)
+
+
 
         // Datos que se cargan al View del Detalle
         tvProduct = view.findViewById(R.id.tvProduct)
@@ -50,12 +54,14 @@ class DetailFragment: Fragment() {
         view?.visibility = View.VISIBLE
         tvProduct.text = product.name
         tvDescription.text = product.description
-        rbRate.rating = product.rating
+        rbRate.rating = product.rate!!
         Picasso.with(requireContext()).load(product.idImage).into(imgProduct)
         tvPrice.text = "$${product.price}"
-        tvCuotas.text = "$%.2f".format(product.price.toFloat()/6f)
+        tvCuotas.text = "$%.2f".format((product.price?.toFloat())?.div(6f))
         tvNumOpinions.text = product.numOpinions.toString()
 
     }
 
 }
+
+

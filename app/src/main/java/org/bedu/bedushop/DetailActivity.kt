@@ -10,6 +10,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import com.airbnb.lottie.LottieAnimationView
+import io.realm.Realm
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
 import org.bedu.bedushop.Product
@@ -23,12 +24,14 @@ class DetailActivity : AppCompatActivity() {
     private lateinit var carroCompra: LottieAnimationView
 
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
+
+
+
         carroCompra=findViewById(R.id.imgProduct)
-
-
 
         //!! Transition sin terminar para el detail
         val transition = Slide(Gravity.BOTTOM).apply {
@@ -41,14 +44,18 @@ class DetailActivity : AppCompatActivity() {
         window.enterTransition = transition
         //!! Transition sin terminar para el detail
 
-
-
+        //ACA ES DONDE HAY QUE ARREGLAR QUE TRAIGA EL PRODUCTO CLICKEADO
+        val product = intent.get
+        val detailFragment = supportFragmentManager.findFragmentById(R.id.fragmentDetail) as? DetailFragment
+        if (product != null) {
+            detailFragment?.showProduct(product)
+/*
         val product = intent.getParcelableExtra<Product>(PRODUCT)
         val detailFragment = supportFragmentManager.findFragmentById(R.id.fragmentDetail) as? DetailFragment
         if (product != null) {
             detailFragment?.showProduct(product)
 
-        }
+        }*/
 
         //Al seleccionar el boton de "Agregar al Carrito " se redirecciona al Activity de Shop, ingresando al fragmente de Carrito
         // Te redirecciona porque le pasamos como valor de origen "DETAIL"
@@ -69,9 +76,11 @@ class DetailActivity : AppCompatActivity() {
 
     }
 
-    private fun animarCarrito(imageView: LottieAnimationView, animation:Int){
+}
+    fun animarCarrito (imageView: LottieAnimationView, animation:Int){
         imageView.setAnimation(animation)
         imageView.speed=0.2f
         imageView.playAnimation()
     }
+
 }

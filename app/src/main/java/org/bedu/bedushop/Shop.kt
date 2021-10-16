@@ -22,6 +22,7 @@ import androidx.core.view.isVisible
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.material.progressindicator.LinearProgressIndicator
+import io.realm.Realm
 import kotlinx.android.synthetic.main.recycler_perfil.*
 
 //Asignamos nuevas variables globales
@@ -41,6 +42,8 @@ class Shop : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_shop)
         progressBar=findViewById(R.id.loadingBar)
+
+
 
 
         //!! Transition sin terminar para el detail
@@ -116,7 +119,7 @@ class Shop : AppCompatActivity() {
                 detailFragment.showProduct(it)
             } else{ //pantalla pequeña, navegar a un nuevo Activity
                 val intent = Intent(this, DetailActivity::class.java)
-                intent.putExtra(DetailActivity.PRODUCT,it)
+
 
                 //!! Transition sin terminar para el detail
 
@@ -175,4 +178,7 @@ class Shop : AppCompatActivity() {
             }
 
             }
+
+    //Para leer un archivo y devolver cadena de texto
+
     }

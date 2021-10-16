@@ -16,6 +16,7 @@ import androidx.core.view.isEmpty
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 import com.squareup.picasso.Picasso
+import io.realm.Realm
 import okhttp3.Callback
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -38,11 +39,16 @@ class MainActivity : AppCompatActivity() {
     private lateinit var registro: Button
     private lateinit var inicio: Button
     private lateinit var layout: LinearLayout
+
+    private lateinit var products: List<Product>
     //Flag para inicio sesión
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
+        //Llamo al Real para construir los productos cuando se inicia la app aunque no los use en esta pantalla
+
 
         //TODO: Checkear como resetear logInFlag cuando se regrese a menú de logIn
 
@@ -231,4 +237,7 @@ class MainActivity : AppCompatActivity() {
         super.finish()
         overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right)
     }
+
+
+
 }

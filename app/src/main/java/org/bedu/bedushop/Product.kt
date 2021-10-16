@@ -2,8 +2,30 @@ package org.bedu.bedushop
 
 import android.os.Parcel
 import android.os.Parcelable
+import io.realm.RealmObject
+import io.realm.annotations.PrimaryKey
+import org.json.JSONObject
+import retrofit2.http.Url
 
-class Product (
+open class Product:RealmObject(){
+    @PrimaryKey
+    var id: Int? =null
+
+    var name: String? =null
+    var price: Float?=null
+    var description: String?=null
+    var category: String? =null
+    var rate: Float? = null
+    var idImage: String? =null
+    var numOpinions: String? =null
+
+
+
+
+}
+
+
+/*class Product (
     val name: String,
     val description: String,
     val price: String,
@@ -43,4 +65,4 @@ class Product (
             return arrayOfNulls(size)
         }
     }
-}
+}*/
