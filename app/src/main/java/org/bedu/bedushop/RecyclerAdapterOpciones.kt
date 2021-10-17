@@ -8,7 +8,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
-private  val bottomSheet = BottomSheetFragment()
+
 
 class RecyclerAdapterOpciones(val options : List<Opciones>, val listener: (Opciones) -> Unit) :
     RecyclerView.Adapter<RecyclerAdapterOpciones.ViewHolder>(){

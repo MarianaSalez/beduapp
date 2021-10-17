@@ -1,6 +1,8 @@
 package org.bedu.bedushop
 
+import android.Manifest
 import android.animation.AnimatorInflater
+import android.annotation.SuppressLint
 import android.app.ActivityOptions
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
@@ -10,12 +12,17 @@ import androidx.fragment.app.Fragment
 //import androidx.navigation.findNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.location.Geocoder
+import android.location.LocationManager
 import android.net.Uri
 import android.transition.TransitionInflater
 import android.util.Log
 import android.view.*
 import android.widget.*
+import androidx.core.app.ActivityCompat
 import androidx.core.app.ActivityOptionsCompat
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat.startActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.isVisible
@@ -23,6 +30,7 @@ import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.material.progressindicator.LinearProgressIndicator
 import kotlinx.android.synthetic.main.recycler_perfil.*
+import java.util.*
 
 //Asignamos nuevas variables globales
 const val USER_EMAIL_SHOP = "org.bedu.bedushop.USER_EMAIL_SHOP"
@@ -31,16 +39,22 @@ const val USER_AVATAR_SHOP = "org.bedu.bedushop.USER_AVATAR_SHOP"
 
 class Shop : AppCompatActivity() {
 
+
+
+
     private  var usuarioFragment= UsuarioFragment()
     private  var listaFragment= ListadoFragment()
     private  var carritoFragment= CarritoFragment()
     private lateinit var menuSuperior: Menu
     private lateinit var progressBar: LinearProgressIndicator
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_shop)
         progressBar=findViewById(R.id.loadingBar)
+
+
 
 
         //!! Transition sin terminar para el detail
@@ -85,6 +99,7 @@ class Shop : AppCompatActivity() {
                     val email = bundle?.getString(USER_EMAIL)
                     val fullName = bundle?.getString(USER_FULL_NAME)
                     val avatar = bundle?.getString(USER_AVATAR)
+
 
                     var bundleFrag = Bundle()//Reasignamos datos de bundle
                     bundleFrag.putString(USER_EMAIL_SHOP, email)
@@ -173,6 +188,23 @@ class Shop : AppCompatActivity() {
                 setTarget(progressBar)
                 start()
             }
+        }
 
-            }
+
+    //Funciones para mostrar y ocultar la bottomNavBar
+
+    fun hideBottomNav() {
+        val bottomNavigation = findViewById<BottomNavigationView>(R.id.bottom_navigation)
+        bottomNavigation.visibility = View.GONE
     }
+
+    fun showBottomNav() {
+        val bottomNavigation = findViewById<BottomNavigationView>(R.id.bottom_navigation)
+        bottomNavigation.visibility = View.VISIBLE
+    }
+
+
+
+
+    }
+
