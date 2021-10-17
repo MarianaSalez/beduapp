@@ -1,6 +1,8 @@
 package org.bedu.bedushop
 
+import android.Manifest
 import android.animation.AnimatorInflater
+import android.annotation.SuppressLint
 import android.app.ActivityOptions
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
@@ -10,12 +12,17 @@ import androidx.fragment.app.Fragment
 //import androidx.navigation.findNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.location.Geocoder
+import android.location.LocationManager
 import android.net.Uri
 import android.transition.TransitionInflater
 import android.util.Log
 import android.view.*
 import android.widget.*
+import androidx.core.app.ActivityCompat
 import androidx.core.app.ActivityOptionsCompat
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat.startActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.isVisible
@@ -24,6 +31,7 @@ import com.google.android.gms.location.LocationServices
 import com.google.android.material.progressindicator.LinearProgressIndicator
 import io.realm.Realm
 import kotlinx.android.synthetic.main.recycler_perfil.*
+import java.util.*
 
 //Asignamos nuevas variables globales
 const val USER_EMAIL_SHOP = "org.bedu.bedushop.USER_EMAIL_SHOP"
@@ -42,8 +50,6 @@ class Shop : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_shop)
         progressBar=findViewById(R.id.loadingBar)
-
-
 
 
         //!! Transition sin terminar para el detail
@@ -119,7 +125,7 @@ class Shop : AppCompatActivity() {
                 detailFragment.showProduct(it)
             } else{ //pantalla pequeña, navegar a un nuevo Activity
                 val intent = Intent(this, DetailActivity::class.java)
-
+                intent.putExtra(DetailActivity.PRODUCT,it)
 
                 //!! Transition sin terminar para el detail
 
@@ -176,9 +182,22 @@ class Shop : AppCompatActivity() {
                 setTarget(progressBar)
                 start()
             }
+        }
 
-            }
 
-    //Para leer un archivo y devolver cadena de texto
+    //Funciones para mostrar y ocultar la bottomNavBar
+
+    fun hideBottomNav() {
+        val bottomNavigation = findViewById<BottomNavigationView>(R.id.bottom_navigation)
+        bottomNavigation.visibility = View.GONE
+    }
+
+    fun showBottomNav() {
+        val bottomNavigation = findViewById<BottomNavigationView>(R.id.bottom_navigation)
+        bottomNavigation.visibility = View.VISIBLE
+    }
+
+
+
 
     }
