@@ -52,6 +52,11 @@ class BottomSheetFragment(): BottomSheetDialogFragment() {
         val botonCerrar = view.findViewById<Button>(R.id.cerrar).setOnClickListener {
             dismiss()
         }
+
+        //Actualiza al momento de abrir la pantalla
+        getLocation()
+
+        //Boton para actualizar la localización
         val botonActualizar = view.findViewById<Button>(R.id.actualizarDir).setOnClickListener {
             getLocation()
         }
