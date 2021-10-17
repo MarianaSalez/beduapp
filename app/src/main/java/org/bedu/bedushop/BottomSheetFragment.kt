@@ -89,6 +89,9 @@ class BottomSheetFragment(): BottomSheetDialogFragment() {
         )
     }
 
+    /*
+    Funcion que trae la localización
+    */
     @SuppressLint("MissingPermission")
     private fun getLocation() {
         if (checkPermissions()) { //verificamos si tenemos permisos
