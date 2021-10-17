@@ -125,7 +125,7 @@ class Shop : AppCompatActivity() {
                 detailFragment.showProduct(it)
             } else{ //pantalla pequeña, navegar a un nuevo Activity
                 val intent = Intent(this, DetailActivity::class.java)
-                intent.putExtra(DetailActivity.PRODUCT,it)
+                intent.putExtra("id", it.id)
 
                 //!! Transition sin terminar para el detail
 

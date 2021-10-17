@@ -22,14 +22,15 @@ class DetailActivity : AppCompatActivity() {
     private lateinit var addBoton: Button
     private  var carritoFragment= CarritoFragment()
     private lateinit var carroCompra: LottieAnimationView
-
+    private lateinit var products: List<Product>
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
 
-
+        val realm = Realm.getDefaultInstance()
+        products = realm.where(Product::class.java).findAll()
 
         carroCompra=findViewById(R.id.imgProduct)
 
@@ -45,7 +46,8 @@ class DetailActivity : AppCompatActivity() {
         //!! Transition sin terminar para el detail
 
         //ACA ES DONDE HAY QUE ARREGLAR QUE TRAIGA EL PRODUCTO CLICKEADO
-        val product = intent.get
+        val id = intent.getIntExtra("id", 0)
+        var product=products[id]
         val detailFragment = supportFragmentManager.findFragmentById(R.id.fragmentDetail) as? DetailFragment
         if (product != null) {
             detailFragment?.showProduct(product)
