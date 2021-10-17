@@ -19,6 +19,7 @@ import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import android.content.DialogInterface
+import android.location.Address
 import android.location.Geocoder
 import java.util.*
 
@@ -90,9 +91,14 @@ class BottomSheetFragment(): BottomSheetDialogFragment() {
 
                 mFusedLocationClient.lastLocation.addOnSuccessListener(requireActivity()) { location ->
                     val geocoder = Geocoder(requireActivity(), Locale.getDefault())
-                    val addresses = geocoder.getFromLocation(location.latitude, location.longitude, 1)
-                    direccion.text = addresses.toString()
+                    val addresses: List<Address> = geocoder.getFromLocation(location.latitude, location.longitude, 1)
 
+                    val addressItem = addresses.first()
+                    val addressFragments = (0 .. addressItem.maxAddressLineIndex).map { i ->
+                        addressItem.getAddressLine(i)
+                    }
+
+                    direccion.text = addressFragments.first()
 
                 }
             }
