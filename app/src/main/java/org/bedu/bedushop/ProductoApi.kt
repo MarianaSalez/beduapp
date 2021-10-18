@@ -9,6 +9,7 @@ class ProductoApi (
     val description: String,
     val rating: rating,
     val image: String,
+    var stock: Int = 0
 
     ): Parcelable {
     constructor(parcel: Parcel) : this(
@@ -17,6 +18,7 @@ class ProductoApi (
         parcel.readString()!!,
         parcel.readParcelable(org.bedu.bedushop.rating::class.java.classLoader)!!,
         parcel.readString()!!,
+        parcel.readInt()
 
         ) {
     }
@@ -27,6 +29,7 @@ class ProductoApi (
         parcel.writeString(description)
         parcel.writeParcelable(rating, flags)
         parcel.writeString(image)
+        parcel.writeInt(stock)
 
     }
 

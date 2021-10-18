@@ -46,8 +46,8 @@ class ListadoFragment : Fragment() {
     private fun setUpRecyclerView() {
         var listStr = this.arguments?.getString(SHOP_LIST)
         val listProductType = object : TypeToken<MutableList<ProductoApi>>(){}.type
-        val prods = Gson().fromJson<MutableList<ProductoApi>>(listStr, listProductType)
-        Log.d("setUpRecycler", prods.toString())
+        val prods = Gson().fromJson<MutableList<ProductoApi>>(MainApp.array, listProductType)
+        //Log.d("setUpRecycler", prods.toString())
         recyclerProducts.setHasFixedSize(true)
         recyclerProducts.layoutManager = LinearLayoutManager(activity)
         //seteando el Adapter

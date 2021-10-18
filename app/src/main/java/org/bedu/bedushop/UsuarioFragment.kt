@@ -3,6 +3,7 @@ package org.bedu.bedushop
 import RecyclerAdapter
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.location.Location
 import android.location.LocationManager
@@ -34,6 +35,13 @@ import kotlin.random.Random
 
 
 class UsuarioFragment : Fragment() {
+
+    val PREFS_NAME = "org.bedu.bedushop"
+    val NAME = "NAME"
+    val MAIL = "MAIL"
+    val AVATAR = "AVATAR"
+
+    lateinit var preferences: SharedPreferences
 
     private lateinit var txtUser : TextView
     private lateinit var txtEmail : TextView

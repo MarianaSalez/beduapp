@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 //import androidx.navigation.findNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import android.content.Intent
+import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.location.Geocoder
 import android.location.LocationManager
@@ -45,6 +46,12 @@ const val USER_FULL_NAME_SHOP = "org.bedu.bedushop.USER_FULL_NAME_SHOP"
 const val USER_AVATAR_SHOP = "org.bedu.bedushop.USER_AVATAR_SHOP"
 const val SHOP_LIST = "org.bedu.bedushop.SHOP_LIST"
 
+//PREFERENCIAS
+val PREFS_NAME = "org.bedu.bedushop"
+val NAME = "NAME"
+val MAIL = "MAIL"
+val AVATAR = "AVATAR"
+
 class Shop : AppCompatActivity() {
 
     private  var usuarioFragment= UsuarioFragment()
@@ -52,12 +59,15 @@ class Shop : AppCompatActivity() {
     private  var carritoFragment= CarritoFragment()
     private lateinit var menuSuperior: Menu
     private lateinit var progressBar: LinearProgressIndicator
+    lateinit var preferences: SharedPreferences
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_shop)
         progressBar=findViewById(R.id.loadingBar)
-
+        preferences = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
 
         //!! Transition sin terminar para el detail
        val transitionXml = TransitionInflater.from(this).inflateTransition(R.transition.descripcion).apply {
@@ -77,12 +87,14 @@ class Shop : AppCompatActivity() {
             var prodcutoDesdeCarrito = intent.getParcelableExtra<ProductoApi>(Intent.EXTRA_INDEX)
             Log.d("EXTRA INDEX: ", prodcutoDesdeCarrito.toString())
 
-            replaceFragment(carritoFragment, null)
+           replaceFragment(carritoFragment, null)
 
             Toast.makeText(this, "Producto Agregado", Toast.LENGTH_SHORT).show()
         }
         else{
-            getProductsList(listaFragment)
+            var bundle : Bundle = Bundle()
+            bundle.putString(SHOP_LIST, MainApp.array)
+            replaceFragment(listaFragment, bundle)
         }
 
 
@@ -104,13 +116,25 @@ class Shop : AppCompatActivity() {
                     val email = bundle?.getString(USER_EMAIL)
                     val fullName = bundle?.getString(USER_FULL_NAME)
                     val avatar = bundle?.getString(USER_AVATAR)
+                    if(email != null) {
+                        preferences.edit()
+                            .putString(NAME, fullName)
+                            .putString(MAIL, email)
+                            .putString(AVATAR, avatar)
+                            .apply()
+                    }
 
-                    var bundleFrag = Bundle()//Reasignamos datos de bundle
-                    bundleFrag.putString(USER_EMAIL_SHOP, email)
-                    bundleFrag.putString(USER_FULL_NAME_SHOP, fullName)
-                    bundleFrag.putString(USER_AVATAR_SHOP,avatar)
-                    Log.d("Bundle Shop", bundleFrag.toString())
-                    replaceFragment(usuarioFragment, bundleFrag)
+                    val emailBundle = preferences.getString(MAIL,"default")
+                    val nameBundle = preferences.getString(NAME, "default")
+                    val avatarBundle = preferences.getString(AVATAR,"default")
+
+                    //las asignamos a nuestra colección y aplicamos
+                        var bundleFrag = Bundle()//Reasignamos datos de bundle
+                        bundleFrag.putString(USER_EMAIL_SHOP, emailBundle)
+                        bundleFrag.putString(USER_FULL_NAME_SHOP, nameBundle)
+                        bundleFrag.putString(USER_AVATAR_SHOP, avatarBundle)
+                        Log.d("Bundle Shop", bundleFrag.toString())
+                        replaceFragment(usuarioFragment, bundleFrag)
                     true
                 }
                 R.id.ic_inicio -> {
@@ -182,13 +206,11 @@ class Shop : AppCompatActivity() {
 
         private fun getProductsList(fragment: Fragment, id: Int = 0){
         var products: MutableList<ProductoApi> = mutableListOf()
-        var product: ProductoApi
         val retrofit: Retrofit = Retrofit.Builder()
             .baseUrl("https://fakestoreapi.com/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
         val service = retrofit.create<WebServices>(WebServices::class.java)
-        if(fragment == listaFragment) {
             service.getAllProducts().enqueue(object : Callback<MutableList<ProductoApi>> {
 
                override fun onResponse(
@@ -209,7 +231,7 @@ class Shop : AppCompatActivity() {
                 }
 
             })
-        }
+
         /*else if(fragment == carritoFragment){
             service.getProduct(id).enqueue(object: Callback<ProductoApi> {
 
@@ -257,8 +279,5 @@ class Shop : AppCompatActivity() {
         val bottomNavigation = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         bottomNavigation.visibility = View.VISIBLE
     }
-
-
-
 
     }
