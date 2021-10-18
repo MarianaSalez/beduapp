@@ -29,14 +29,21 @@ import androidx.core.view.isVisible
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.material.progressindicator.LinearProgressIndicator
+import com.google.gson.Gson
 import io.realm.Realm
 import kotlinx.android.synthetic.main.recycler_perfil.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import java.util.*
 
 //Asignamos nuevas variables globales
 const val USER_EMAIL_SHOP = "org.bedu.bedushop.USER_EMAIL_SHOP"
 const val USER_FULL_NAME_SHOP = "org.bedu.bedushop.USER_FULL_NAME_SHOP"
 const val USER_AVATAR_SHOP = "org.bedu.bedushop.USER_AVATAR_SHOP"
+const val SHOP_LIST = "org.bedu.bedushop.SHOP_LIST"
 
 class Shop : AppCompatActivity() {
 
@@ -65,14 +72,17 @@ class Shop : AppCompatActivity() {
 
         /*Inicializa frament segun su origen
         * Se es por Inicio seccion o registrar o DETAIL*/
-        val origen : String = intent.getStringExtra("origen").toString()
+        val origen : String? = intent.getStringExtra("origen")
         if(origen == "DETAIL"){
+            var prodcutoDesdeCarrito = intent.getParcelableExtra<ProductoApi>(Intent.EXTRA_INDEX)
+            Log.d("EXTRA INDEX: ", prodcutoDesdeCarrito.toString())
+
             replaceFragment(carritoFragment, null)
 
             Toast.makeText(this, "Producto Agregado", Toast.LENGTH_SHORT).show()
         }
         else{
-            replaceFragment(listaFragment, null)
+            getProductsList(listaFragment)
         }
 
 
@@ -105,7 +115,7 @@ class Shop : AppCompatActivity() {
                 }
                 R.id.ic_inicio -> {
                     loading(progressBar)
-                    replaceFragment(listaFragment, null)
+                    getProductsList(listaFragment)
                     true
                 }
                 else -> {
@@ -125,17 +135,17 @@ class Shop : AppCompatActivity() {
                 detailFragment.showProduct(it)
             } else{ //pantalla pequeña, navegar a un nuevo Activity
                 val intent = Intent(this, DetailActivity::class.java)
-                intent.putExtra("id", it.id)
+                intent.putExtra(DetailActivity.PRODUCT,it)
 
                 //!! Transition sin terminar para el detail
 
-               // EN ESTA SECCION PROBE DE USAR SHARED TRANSITION PERO NO ME GUSTO EL RESULTADO, PREGUNTAR A JAVI
+                // EN ESTA SECCION PROBE DE USAR SHARED TRANSITION PERO NO ME GUSTO EL RESULTADO, PREGUNTAR A JAVI
 
-               /* val options = ViewCompat.getTransitionName(findViewById(R.id.cardviewLista))?.let {
-                    ActivityOptionsCompat.makeSceneTransitionAnimation(
-                        this, findViewById(R.id.cardviewLista), it
-                    )
-                }*/
+                /* val options = ViewCompat.getTransitionName(findViewById(R.id.cardviewLista))?.let {
+                     ActivityOptionsCompat.makeSceneTransitionAnimation(
+                         this, findViewById(R.id.cardviewLista), it
+                     )
+                 }*/
 
                 startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle())
             }
@@ -169,6 +179,57 @@ class Shop : AppCompatActivity() {
             trans.addToBackStack(null)
             trans.commit()
         }
+
+        private fun getProductsList(fragment: Fragment, id: Int = 0){
+        var products: MutableList<ProductoApi> = mutableListOf()
+        var product: ProductoApi
+        val retrofit: Retrofit = Retrofit.Builder()
+            .baseUrl("https://fakestoreapi.com/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+        val service = retrofit.create<WebServices>(WebServices::class.java)
+        if(fragment == listaFragment) {
+            service.getAllProducts().enqueue(object : Callback<MutableList<ProductoApi>> {
+
+               override fun onResponse(
+                    call: Call<MutableList<ProductoApi>>,
+                    response: Response<MutableList<ProductoApi>>
+                ) {
+                    products = response.body()!!
+                    Log.d("json?", products.toString())
+                    Log.i("GsonConverter", Gson().toJson(products))
+                    val json = Gson().toJson(products)
+                    var bundleFrag = Bundle()
+                    bundleFrag.putString(SHOP_LIST, json)
+                    replaceFragment(fragment, bundleFrag)
+                }
+
+                override fun onFailure(call: Call<MutableList<ProductoApi>>, t: Throwable) {
+                    t.printStackTrace()
+                }
+
+            })
+        }
+        /*else if(fragment == carritoFragment){
+            service.getProduct(id).enqueue(object: Callback<ProductoApi> {
+
+                override fun onResponse(call: Call<ProductoApi>, response: Response<ProductoApi>) {
+                    product = response.body()!!
+                    Log.d("json?Id", products.toString())
+                    Log.i("GsonConverterId", Gson().toJson(products))
+                    val json = Gson().toJson(products)
+                    var bundleFrag = Bundle()
+                    bundleFrag.putString(SHOP_LIST, json)
+                    replaceFragment(fragment, bundleFrag)
+                }
+
+                override fun onFailure(call: Call<ProductoApi>, t: Throwable) {
+                    t.printStackTrace()
+                }
+            })
+        }*/
+    }
+
         override fun onCreateOptionsMenu(menu: Menu): Boolean {
             val inflater: MenuInflater = menuInflater
             inflater.inflate(R.menu.menu_superior, menu)

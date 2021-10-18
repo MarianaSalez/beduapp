@@ -22,17 +22,14 @@ class DetailActivity : AppCompatActivity() {
     private lateinit var addBoton: Button
     private  var carritoFragment= CarritoFragment()
     private lateinit var carroCompra: LottieAnimationView
-    private lateinit var products: List<Product>
+    private lateinit var products: List<ProductoApi>
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
 
-        val realm = Realm.getDefaultInstance()
-        products = realm.where(Product::class.java).findAll()
-
-        carroCompra=findViewById(R.id.imgProduct)
+       carroCompra=findViewById(R.id.imgProduct)
 
         //!! Transition sin terminar para el detail
         val transition = Slide(Gravity.BOTTOM).apply {
@@ -46,8 +43,7 @@ class DetailActivity : AppCompatActivity() {
 
         //Se realiza el binding de la informacion recibida desde el lsit fragement  al detail fragment
 
-        val id = intent.getIntExtra("id", 0)
-        var product=products[id]
+        val product = intent.getParcelableExtra<ProductoApi>(PRODUCT)
         val detailFragment = supportFragmentManager.findFragmentById(R.id.fragmentDetail) as? DetailFragment
         if (product != null) {
             detailFragment?.showProduct(product)
@@ -64,7 +60,7 @@ class DetailActivity : AppCompatActivity() {
             val intent= Intent(this, Shop::class.java).apply {
             //DATOS EXTRA
             intent.putExtra("origen", "DETAIL")
-            putExtra(Intent.EXTRA_INDEX, product.id)
+            putExtra(Intent.EXTRA_INDEX, product)
             };
 
             startActivity(intent)

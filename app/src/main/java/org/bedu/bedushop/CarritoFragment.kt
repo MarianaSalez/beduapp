@@ -35,11 +35,6 @@ class CarritoFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_carrito, container, false)
 
 
-        //Me traigo lo visual
-        mpName = view.findViewById(R.id.titleCarrito)
-        mpimg = view.findViewById(R.id.carritoImageView)
-        mpPrice = view.findViewById(R.id.priceCarrito)
-
         //Funcion para pasar al fragment de compra
         val boton = view.findViewById<Button>(R.id.buttonComprar)
         boton.setOnClickListener {
@@ -63,15 +58,13 @@ class CarritoFragment : Fragment() {
         val realm = Realm.getDefaultInstance()
         products = realm.where(Product::class.java).findAll()
 
-        val id = intent.getIntExtra("id", 0)
+        /*val product = intent.getIntExtra("id", 0)
         var product = products[id].id
         val marketObject =
             supportFragmentManager.findFragmentById(R.id.recyclerCarrito) as? CarritoFragment
         if (product != null) {
             marketObject?.showInMarket(product, products)
-
-
-        }
+        }*/
     }
 
 
@@ -86,4 +79,3 @@ class CarritoFragment : Fragment() {
 
         }
     }
-}

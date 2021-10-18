@@ -49,16 +49,16 @@ class DetailFragment: Fragment() {
     }
 
     // Funcion que carga los datos del producto en la pantalla del Detalle
-    fun showProduct(product: Product){
+    fun showProduct(product: ProductoApi){
 
         view?.visibility = View.VISIBLE
-        tvProduct.text = product.name
+        tvProduct.text = product.title
         tvDescription.text = product.description
-        rbRate.rating = product.rate!!
-        Picasso.with(requireContext()).load(product.idImage).into(imgProduct)
+        rbRate.rating = product.rating.rate.toFloat()
+        Picasso.with(requireContext()).load(product.image).into(imgProduct)
         tvPrice.text = "$${product.price}"
-        tvCuotas.text = "$%.2f".format((product.price?.toFloat())?.div(6f))
-        tvNumOpinions.text = product.numOpinions.toString()
+        tvCuotas.text = "$%.2f".format(product.price.toFloat()/6f)
+        tvNumOpinions.text = product.rating.count.toString()
 
     }
 

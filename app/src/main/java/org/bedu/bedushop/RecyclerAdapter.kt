@@ -11,24 +11,27 @@ import com.squareup.picasso.Picasso
 import io.realm.Realm
 import org.bedu.bedushop.Opciones
 import org.bedu.bedushop.Product
+import org.bedu.bedushop.ProductoApi
 import org.bedu.bedushop.R
 
 //Declaración con constructor
 class RecyclerAdapter(
     private val context: Context,
-    private var products: List<Product>,
-    private val clickListener: (Product) -> Unit): RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
+    private var products: MutableList<ProductoApi>,
+    private val clickListener: (ProductoApi) -> Unit): RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
 
     //Aquí atamos el ViewHolder
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val product = products?.get(position)
+        if (product != null) {
+            holder.bind(product, context)
+        }
 
-        val realm = Realm.getDefaultInstance()
-        products = realm.where(Product::class.java).findAll()
-
-        val product = products[position]
-        holder.bind(product, context)
-
-        holder.view.setOnClickListener{clickListener(product)}
+        holder.view.setOnClickListener {
+            if (product != null) {
+                clickListener(product)
+            }
+        }
 
     }
 
@@ -39,7 +42,10 @@ class RecyclerAdapter(
     }
 
     override fun getItemCount(): Int {
-        return products.size
+        if (products != null) {
+            return products.size
+        }
+        return 0
     }
 
     //El ViewHolder ata los datos del RecyclerView a la Vista para desplegar la información
@@ -52,12 +58,11 @@ class RecyclerAdapter(
         val image = view.findViewById(R.id.imgProduct) as ImageView
 
         //"atando" los datos a las Views
-        fun bind(product: Product, context: Context){
-            productName.text = product.name
+        fun bind(product: ProductoApi, context: Context) {
+            productName.text = product.title
             price.text = "$${product.price}"
-            ratingBar.rating = product.rate!!
-            Picasso.with(context).load(product.idImage).into(image)
+            ratingBar.rating = product.rating.rate.toFloat()
+            Picasso.with(context).load(product.image).into(image)
         }
     }
-
 }
