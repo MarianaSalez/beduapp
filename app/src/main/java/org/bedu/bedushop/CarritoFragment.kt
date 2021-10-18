@@ -9,10 +9,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.RatingBar
-import android.widget.TextView
+import android.widget.*
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.Gson
@@ -28,7 +25,7 @@ class CarritoFragment : Fragment() {
     private lateinit var mpName: TextView
     private lateinit var mpimg: ImageView
     private lateinit var mpPrice: TextView
-    private lateinit var products: List<Product>
+    private var products: MutableList<Int> = mutableListOf()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -51,7 +48,22 @@ class CarritoFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        setUpRecyclerView()
+
+        val id= arguments?.getInt("idProd")
+        Log.d("argument", id.toString())
+    if(id!=null){
+        if ((products.find{it==id})!=null){
+            //llamo al producto con dicho id y aumento su cantidad en 1
+            products.add(id)
+        }
+        else{
+            //Aca hay que modificar el recyler view para que cree el elemento a partir del id del producto
+            setUpRecyclerView1(id)
+
+        }
+
+    }
+
     }
 
     private fun replaceFragment(fragment: Fragment, bundle: Bundle?) {
@@ -89,15 +101,15 @@ class CarritoFragment : Fragment() {
         }
 
 
-    private fun setUpRecyclerView() {
-        var listStr = this.arguments?.getString(SHOP_LIST)
+    private fun setUpRecyclerView1(id:Int) {
+        var listStr = this.arguments?.getString(MainApp.array)
         val listProductType = object : TypeToken<MutableList<ProductoApi>>(){}.type
         val prods = Gson().fromJson<MutableList<ProductoApi>>(listStr, listProductType)
         //Log.d("setUpRecycler", prods.toString())
         recyclerCarrito.setHasFixedSize(true)
         recyclerCarrito.layoutManager = LinearLayoutManager(activity)
         //seteando el Adapter
-        val testProd : MutableList<ProductoApi> = mutableListOf()
+        val testProd = prods[id]
         //testProd.add(ProductoApi("Mochila", 21.50f, "Mochila test", rating(4.10,50), "https://http2.mlstatic.com/D_NQ_NP_746908-MLA46933276297_072021-O.webp"))
        // testProd.add(ProductoApi("Mochila", 21.50f, "Mochila test", rating(4.10,50), "https://http2.mlstatic.com/D_NQ_NP_746908-MLA46933276297_072021-O.webp"))
         mAdapter = RecyclerAdapterCarrito(requireActivity(), testProd)//esto es uma prueba

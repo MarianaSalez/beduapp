@@ -17,7 +17,7 @@ import io.realm.Realm
 import kotlinx.android.synthetic.main.fragment_carrito.*
 
 class RecyclerAdapterCarrito (private val context: Context,
-                              private var products: MutableList<ProductoApi>): RecyclerView.Adapter<RecyclerAdapterCarrito.ViewHolder>(){
+                              private var products: ProductoApi): RecyclerView.Adapter<RecyclerAdapterCarrito.ViewHolder>(){
     class ViewHolder(view : View) : RecyclerView.ViewHolder(view){
         private val title = view.findViewById<TextView>(R.id.titleCarrito)
         private val price = view.findViewById<TextView>(R.id.priceCarrito)
@@ -43,14 +43,14 @@ class RecyclerAdapterCarrito (private val context: Context,
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val product = products?.get(position)
+        val product = products
         if (product != null) {
             holder.bind(product, context)
         }
     }
 
     override fun getItemCount(): Int {
-        return products.size
+     return 0
     }
 
 }

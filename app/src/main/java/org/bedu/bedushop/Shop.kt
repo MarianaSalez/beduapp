@@ -91,10 +91,6 @@ class Shop : AppCompatActivity() {
             var bundle : Bundle = Bundle()
             bundle.putInt("idProd",prodcutoDesdeCarrito)
             replaceFragment(carritoFragment, bundle)
-            val result = prodcutoDesdeCarrito
-            // Use the Kotlin extension in the fragment-ktx artifact
-
-            Toast.makeText(this, "Producto Agregado", Toast.LENGTH_SHORT).show()
 
         }
 
