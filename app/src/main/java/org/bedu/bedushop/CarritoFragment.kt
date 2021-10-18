@@ -100,7 +100,7 @@ class CarritoFragment : Fragment() {
         val testProd : MutableList<ProductoApi> = mutableListOf()
         testProd.add(ProductoApi("Mochila", 21.50f, "Mochila test", rating(4.10,50), "https://http2.mlstatic.com/D_NQ_NP_746908-MLA46933276297_072021-O.webp"))
         testProd.add(ProductoApi("Mochila", 21.50f, "Mochila test", rating(4.10,50), "https://http2.mlstatic.com/D_NQ_NP_746908-MLA46933276297_072021-O.webp"))
-        mAdapter = RecyclerAdapterCarrito(requireActivity(), testProd)
+        mAdapter = RecyclerAdapterCarrito(requireActivity(), testProd)//esto es uma prueba
         //asignando el Adapter al RecyclerView
         recyclerCarrito.adapter = mAdapter
     }

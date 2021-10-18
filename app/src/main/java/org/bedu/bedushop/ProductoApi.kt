@@ -4,6 +4,7 @@ import android.os.Parcel
 import android.os.Parcelable
 
 class ProductoApi (
+    val id: Int,
     val title: String,
     val price: Float,
     val description: String,
@@ -13,6 +14,7 @@ class ProductoApi (
 
     ): Parcelable {
     constructor(parcel: Parcel) : this(
+        parcel.readInt()!!,
         parcel.readString()!!,
         parcel.readFloat()!!,
         parcel.readString()!!,
@@ -24,6 +26,7 @@ class ProductoApi (
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeInt(id)
         parcel.writeString(title)
         parcel.writeFloat(price)
         parcel.writeString(description)
