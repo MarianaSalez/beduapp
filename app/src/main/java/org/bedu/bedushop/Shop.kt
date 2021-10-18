@@ -94,11 +94,7 @@ class Shop : AppCompatActivity() {
             val result = prodcutoDesdeCarrito
             // Use the Kotlin extension in the fragment-ktx artifact
 
-            startActivity(intent)
-
-
             Toast.makeText(this, "Producto Agregado", Toast.LENGTH_SHORT).show()
-
 
         }
 
