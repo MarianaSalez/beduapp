@@ -57,14 +57,13 @@ class DetailActivity : AppCompatActivity() {
                     delay(200)
                 }
 
-            val intent= Intent(this, Shop::class.java).apply {
+            val intent= Intent(this, Shop::class.java).apply {}
             //DATOS EXTRA
             intent.putExtra("origen", "DETAIL")
-            putExtra(Intent.EXTRA_INDEX, product)
-            };
+            intent.putExtra("id", product.id)
+            ;
 
             startActivity(intent)
-
 
         }
 
@@ -73,7 +72,7 @@ class DetailActivity : AppCompatActivity() {
 }
     fun animarCarrito (imageView: LottieAnimationView, animation:Int){
         imageView.setAnimation(animation)
-        imageView.speed=0.2f
+        imageView.speed=1.2f
         imageView.playAnimation()
     }
 
