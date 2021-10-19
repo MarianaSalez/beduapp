@@ -32,6 +32,7 @@ import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat.startActivity
+import androidx.core.os.bundleOf
 import androidx.core.view.ViewCompat
 import androidx.core.view.isVisible
 import com.google.android.gms.location.FusedLocationProviderClient
@@ -97,15 +98,17 @@ class Shop : AppCompatActivity() {
         /*Inicializa frament segun su origen
         * Se es por Inicio seccion o registrar o DETAIL*/
         val origen : String? = intent.getStringExtra("origen")
+
         if(origen == "DETAIL"){
-            var prodcutoDesdeCarrito = intent.getParcelableExtra<ProductoApi>(Intent.EXTRA_INDEX)
-            Log.d("EXTRA INDEX: ", prodcutoDesdeCarrito.toString())
-            replaceFragment(carritoFragment, null)
-            Toast.makeText(this, "Producto Agregado", Toast.LENGTH_SHORT).show()
-        }
-        else if(origen == "COMPRA") {
+
+            val prodcutoDesdeCarrito :Int = intent.getIntExtra("id",0)
+            var bundle : Bundle = Bundle()
+            bundle.putInt("idProd",prodcutoDesdeCarrito)
+            replaceFragment(carritoFragment, bundle)
+
+        }/*else if(origen == "COMPRA") {
             replaceFragment(compraFragment, null)
-        }
+        }*/
 
         else{
             var bundle : Bundle = Bundle()

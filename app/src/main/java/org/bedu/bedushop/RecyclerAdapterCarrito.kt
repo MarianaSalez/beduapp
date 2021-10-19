@@ -50,7 +50,8 @@ class RecyclerAdapterCarrito (private val context: Context,
     }
 
     override fun getItemCount(): Int {
-        return products.size
+
+     return products.size
     }
 
 }
