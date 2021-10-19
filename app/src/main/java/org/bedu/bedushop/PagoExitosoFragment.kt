@@ -10,7 +10,7 @@ import android.widget.Button
 
 class PagoExitosoFragment : Fragment() {
 
-    private  var listaFragment= ListadoFragment()
+    private  var carritoFragment= CarritoFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,7 +25,7 @@ class PagoExitosoFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_pago_exitoso, container, false)
         val button = view.findViewById<Button>(R.id.btnFinal)
         button.setOnClickListener {
-            replaceFragment(listaFragment, null)
+            replaceFragment(carritoFragment, null)
 
             (activity as Shop).showBottomNav()
         }
