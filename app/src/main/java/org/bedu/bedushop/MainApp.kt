@@ -51,6 +51,7 @@ class MainApp: Application() {
                 Log.d("json?", products.toString())
                 Log.i("GsonConverter", Gson().toJson(products))
                 array = Gson().toJson(products)
+
             }
 
             override fun onFailure(call: Call<MutableList<ProductoApi>>, t: Throwable) {

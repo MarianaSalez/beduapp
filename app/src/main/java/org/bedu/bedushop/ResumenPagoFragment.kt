@@ -1,5 +1,6 @@
 package org.bedu.bedushop
 
+import android.app.Activity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -27,6 +28,7 @@ class ResumenPagoFragment : Fragment() {
 
         button.setOnClickListener {
             replaceFragment(pago, null)
+            (activity as Shop).compraNotification()
         }
         super.onViewCreated(view, savedInstanceState)
         (activity as Shop).hideBottomNav()

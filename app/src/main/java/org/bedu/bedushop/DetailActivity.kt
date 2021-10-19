@@ -9,6 +9,7 @@ import android.view.Menu
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
+import androidx.fragment.app.Fragment
 import com.airbnb.lottie.LottieAnimationView
 import io.realm.Realm
 import kotlinx.coroutines.delay
@@ -53,15 +54,19 @@ class DetailActivity : AppCompatActivity() {
         addBoton = findViewById(R.id.addCarrito)
         addBoton.setOnClickListener{
                 runBlocking{
+
                     animarCarrito(carroCompra,R.raw.carrito)
                     delay(200)
+
                 }
 
             val intent= Intent(this, Shop::class.java).apply {
             //DATOS EXTRA
             intent.putExtra("origen", "DETAIL")
-            putExtra(Intent.EXTRA_INDEX, product)
-            };
+            intent.putExtra("id", product.id)
+            intent.putExtra(Intent.EXTRA_INDEX, product)
+
+            }
 
             startActivity(intent)
 
@@ -77,4 +82,12 @@ class DetailActivity : AppCompatActivity() {
         imageView.playAnimation()
     }
 
+
+    private fun replaceFragment(fragment: Fragment, bundle:Bundle?){
+        fragment.arguments = bundle//Enviamos Bundle, de existir
+        val trans = supportFragmentManager.beginTransaction()
+        trans.replace(R.id.fragemento_contenedor, fragment)
+        trans.addToBackStack(null)
+        trans.commit()
+    }
 }

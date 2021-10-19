@@ -4,6 +4,9 @@ import android.Manifest
 import android.animation.AnimatorInflater
 import android.annotation.SuppressLint
 import android.app.ActivityOptions
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.app.PendingIntent
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -17,12 +20,16 @@ import android.content.pm.PackageManager
 import android.location.Geocoder
 import android.location.LocationManager
 import android.net.Uri
+import android.os.Build
 import android.transition.TransitionInflater
 import android.util.Log
 import android.view.*
 import android.widget.*
+import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
 import androidx.core.app.ActivityOptionsCompat
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat.startActivity
 import androidx.core.view.ViewCompat
@@ -45,6 +52,8 @@ const val USER_EMAIL_SHOP = "org.bedu.bedushop.USER_EMAIL_SHOP"
 const val USER_FULL_NAME_SHOP = "org.bedu.bedushop.USER_FULL_NAME_SHOP"
 const val USER_AVATAR_SHOP = "org.bedu.bedushop.USER_AVATAR_SHOP"
 const val SHOP_LIST = "org.bedu.bedushop.SHOP_LIST"
+const val PRODUCTO_ID = "org.bedu.bedushop.PRODUCTO_ID"
+val CHANNEL_OTHERS = "OTROS"
 
 //PREFERENCIAS
 val PREFS_NAME = "org.bedu.bedushop"
@@ -53,7 +62,7 @@ val MAIL = "MAIL"
 val AVATAR = "AVATAR"
 
 class Shop : AppCompatActivity() {
-
+    private val compraFragment = ResumenPagoFragment()
     private  var usuarioFragment= UsuarioFragment()
     private  var listaFragment= ListadoFragment()
     private  var carritoFragment= CarritoFragment()
@@ -68,6 +77,11 @@ class Shop : AppCompatActivity() {
         setContentView(R.layout.activity_shop)
         progressBar=findViewById(R.id.loadingBar)
         preferences = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            setNotificationChannel()
+        }
 
         //!! Transition sin terminar para el detail
        val transitionXml = TransitionInflater.from(this).inflateTransition(R.transition.descripcion).apply {
@@ -86,11 +100,13 @@ class Shop : AppCompatActivity() {
         if(origen == "DETAIL"){
             var prodcutoDesdeCarrito = intent.getParcelableExtra<ProductoApi>(Intent.EXTRA_INDEX)
             Log.d("EXTRA INDEX: ", prodcutoDesdeCarrito.toString())
-
-           replaceFragment(carritoFragment, null)
-
+            replaceFragment(carritoFragment, null)
             Toast.makeText(this, "Producto Agregado", Toast.LENGTH_SHORT).show()
         }
+        else if(origen == "COMPRA") {
+            replaceFragment(compraFragment, null)
+        }
+
         else{
             var bundle : Bundle = Bundle()
             bundle.putString(SHOP_LIST, MainApp.array)
@@ -266,6 +282,49 @@ class Shop : AppCompatActivity() {
                 start()
             }
         }
+
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun setNotificationChannel(){
+        val name = getString(R.string.AgregarCarrito)
+        val descriptionText = getString(R.string.app_name)
+        val importance = NotificationManager.IMPORTANCE_DEFAULT
+        val channel = NotificationChannel(CHANNEL_OTHERS, name, importance).apply {
+            description = descriptionText
+        }
+
+        val notificationManager: NotificationManager =
+            getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+
+        notificationManager.createNotificationChannel(channel)
+    }
+
+
+    fun compraNotification(){
+
+
+        val intent = Intent(this, Shop::class.java).apply {
+            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            intent.putExtra("origen", "COMPRA")
+        }
+        val pendingIntent: PendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+
+
+
+        var builder = NotificationCompat.Builder(this, CHANNEL_OTHERS)
+            .setSmallIcon(R.drawable.bedu) //seteamos el ícono de la push notification
+            .setContentTitle(getString(R.string.title)) //seteamos el título de la notificación
+            .setContentText(getString(R.string.body)) //seteamos el cuerpo de la notificación
+            .setPriority(NotificationCompat.PRIORITY_DEFAULT) //Ponemos una prioridad por defecto
+            .setContentIntent(pendingIntent) //se define aquí el content intend
+            .setAutoCancel(true)
+
+        //lanzamos la notificación
+        with(NotificationManagerCompat.from(this)) {
+            notify(20, builder.build()) //en este caso pusimos un id genérico
+        }
+    }
+
 
 
     //Funciones para mostrar y ocultar la bottomNavBar

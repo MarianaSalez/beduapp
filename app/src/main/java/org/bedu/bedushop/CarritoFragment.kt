@@ -9,10 +9,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.RatingBar
-import android.widget.TextView
+import android.widget.*
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.Gson
@@ -35,6 +32,7 @@ class CarritoFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
+
         // Inflate the layout for this fragment
         val resumen = ResumenPagoFragment()
         val view = inflater.inflate(R.layout.fragment_carrito, container, false)
@@ -44,6 +42,7 @@ class CarritoFragment : Fragment() {
         val boton = view.findViewById<Button>(R.id.buttonComprar)
         boton.setOnClickListener {
             replaceFragment(resumen, null)
+
         }
 
         return view
@@ -91,6 +90,7 @@ class CarritoFragment : Fragment() {
 
     private fun setUpRecyclerView() {
         var listStr = this.arguments?.getString(SHOP_LIST)
+
         val listProductType = object : TypeToken<MutableList<ProductoApi>>(){}.type
         val prods = Gson().fromJson<MutableList<ProductoApi>>(listStr, listProductType)
         //Log.d("setUpRecycler", prods.toString())
@@ -98,8 +98,9 @@ class CarritoFragment : Fragment() {
         recyclerCarrito.layoutManager = LinearLayoutManager(activity)
         //seteando el Adapter
         val testProd : MutableList<ProductoApi> = mutableListOf()
-        testProd.add(ProductoApi("Mochila", 21.50f, "Mochila test", rating(4.10,50), "https://http2.mlstatic.com/D_NQ_NP_746908-MLA46933276297_072021-O.webp"))
-        testProd.add(ProductoApi("Mochila", 21.50f, "Mochila test", rating(4.10,50), "https://http2.mlstatic.com/D_NQ_NP_746908-MLA46933276297_072021-O.webp"))
+
+        //testProd.add(ProductoApi("Mochila", 21.50f, "Mochila test", rating(4.10,50), "https://http2.mlstatic.com/D_NQ_NP_746908-MLA46933276297_072021-O.webp"))
+        //testProd.add(ProductoApi("Mochila", 21.50f, "Mochila test", rating(4.10,50), "https://http2.mlstatic.com/D_NQ_NP_746908-MLA46933276297_072021-O.webp"))
         mAdapter = RecyclerAdapterCarrito(requireActivity(), testProd)//esto es uma prueba
         //asignando el Adapter al RecyclerView
         recyclerCarrito.adapter = mAdapter

@@ -41,4 +41,9 @@
             android:id="@+id/action_listadoFragment_to_carritoFragment"
             app:destination="@id/carritoFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/resumenPagoFragment"
+        android:name="org.bedu.bedushop.ResumenPagoFragment"
+        android:label="fragment_resumen_pago"
+        tools:layout="@layout/fragment_resumen_pago" />
 </navigation>

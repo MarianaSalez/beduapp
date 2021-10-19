@@ -5,6 +5,7 @@ import android.text.method.ScrollingMovementMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.RatingBar
 import android.widget.TextView
@@ -24,6 +25,7 @@ class DetailFragment: Fragment() {
 
 
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -40,6 +42,7 @@ class DetailFragment: Fragment() {
         tvPrice = view.findViewById(R.id.tvPrice)
         tvCuotas = view.findViewById(R.id.tvCuotas)
         tvNumOpinions = view.findViewById(R.id.tvNumOpinions)
+
 
         //Funcion que te escrolea SOLO EL DETALLE
         tvDescription.movementMethod = ScrollingMovementMethod()
