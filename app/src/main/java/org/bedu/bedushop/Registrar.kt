@@ -30,24 +30,6 @@ class Registrar : AppCompatActivity() {
         setContentView(R.layout.activity_registrar)
 
 
-       /* //! TRANSITIONS A MEJORAR(SOLVED)
-        val transitionXml = TransitionInflater.from(this).inflateTransition(R.transition.login).apply {
-            excludeTarget(window.decorView.findViewById<View>(R.id.action_bar_container), true)
-            excludeTarget(android.R.id.statusBarBackground, true)
-            excludeTarget(android.R.id.navigationBarBackground, true)
-        }
-        window.exitTransition = transitionXml
-
-        val transition = Slide(Gravity.RIGHT).apply {
-            duration = 200
-            excludeTarget(window.decorView.findViewById<View>(R.id.action_bar_container), true)
-            excludeTarget(android.R.id.statusBarBackground, true)
-            excludeTarget(android.R.id.navigationBarBackground, true)
-        }
-
-        window.enterTransition = transition
-
-        //! TRANSITIONS A MEJORAR*/
 
         name= findViewById(R.id.completeNameR)
         mail= findViewById(R.id.editTextEmailR)
