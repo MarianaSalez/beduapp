@@ -38,6 +38,8 @@ class CarritoFragment : Fragment() {
         val resumen = ResumenPagoFragment()
         val view = inflater.inflate(R.layout.fragment_carrito, container, false)
 
+        val bundleDesdeDetail = arguments?.getParcelable<ProductoApi>(SHOP_PRODUCT)
+        Log.d("Producto en carrito", bundleDesdeDetail?.id.toString())
 
         //Funcion para pasar al fragment de compra
         val boton = view.findViewById<Button>(R.id.buttonComprar)
@@ -50,6 +52,7 @@ class CarritoFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
 
 
 //Traigo como argumento el id del elemento que se agrego al carrito

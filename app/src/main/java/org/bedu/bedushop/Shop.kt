@@ -55,6 +55,7 @@ const val USER_AVATAR_SHOP = "org.bedu.bedushop.USER_AVATAR_SHOP"
 const val SHOP_LIST = "org.bedu.bedushop.SHOP_LIST"
 const val PRODUCTO_ID = "org.bedu.bedushop.PRODUCTO_ID"
 val CHANNEL_OTHERS = "OTROS"
+const val SHOP_PRODUCT = "org.bedu.bedushop.SHOP_PRODUCT"
 
 //PREFERENCIAS
 val PREFS_NAME = "org.bedu.bedushop"
@@ -101,10 +102,13 @@ class Shop : AppCompatActivity() {
 
         when (origen) {
             "DETAIL" -> {
-                val prodcutoDesdeCarrito :Int = intent.getIntExtra("id",0)
-                var bundle : Bundle = Bundle()
-                bundle.putInt("id",prodcutoDesdeCarrito)
-                replaceFragment(carritoFragment, bundle)
+                var prodcutoDesdeCarrito = intent.getParcelableExtra<ProductoApi>(Intent.EXTRA_INDEX)
+                val bundleCarrito : Bundle = Bundle()
+                bundleCarrito.putParcelable(SHOP_PRODUCT, prodcutoDesdeCarrito)
+                replaceFragment(carritoFragment,
+                    bundleCarrito)
+
+                Toast.makeText(this, "Producto Agregado", Toast.LENGTH_SHORT).show()
                 true
             }
             "COMPRA" -> {

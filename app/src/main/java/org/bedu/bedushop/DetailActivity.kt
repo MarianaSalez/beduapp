@@ -52,21 +52,22 @@ class DetailActivity : AppCompatActivity() {
 
         //Al seleccionar el boton de "Agregar al Carrito " se redirecciona al Activity de Shop, ingresando al fragmente de Carrito
         addBoton = findViewById(R.id.addCarrito)
-        addBoton.setOnClickListener{
+            addBoton.setOnClickListener{
                 runBlocking{
                     animarCarrito(carroCompra,R.raw.carrito)
                     delay(200)
                 }
 
-            val intent= Intent(this, Shop::class.java).apply {}
-            //DATOS EXTRA
-            intent.putExtra("origen", "DETAIL")
-            intent.putExtra("idProD", product)
+                val intentDetail = Intent(this, Shop::class.java).apply {
+                    //DATOS EXTRA
+                    putExtra("origen", "DETAIL")
+                    putExtra(Intent.EXTRA_INDEX, product)
+                };
+
+                startActivity(intentDetail)
 
 
-            startActivity(intent)
-
-
+            }
         }
 
     }
@@ -78,4 +79,3 @@ class DetailActivity : AppCompatActivity() {
         imageView.playAnimation()
     }
 
-}
