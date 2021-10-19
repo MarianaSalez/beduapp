@@ -17,6 +17,7 @@ import com.google.gson.reflect.TypeToken
 import com.squareup.picasso.Picasso
 import io.realm.Realm
 import kotlinx.android.synthetic.main.fragment_carrito.*
+import java.io.IOException
 
 
 class CarritoFragment : Fragment() {
@@ -50,22 +51,33 @@ class CarritoFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        val bundleDesdeDetail = arguments?.getParcelable<ProductoApi>(SHOP_PRODUCT)!! //No hay persistencia en el array!
 
-//Si no fallo mim bundle, y por lo tanto no es nulo
-            if(bundleDesdeDetail.id!=null){
-                if ((products.find{it.id in idProducts})!=null){
-                    products[id].stock++
-                    Log.d("cantidad","cambiar")
-                    Log.d("Stock", products[id].stock.toString())
-                }
-                else{
-                    products.add(bundleDesdeDetail)
-                    idProducts.add(bundleDesdeDetail.id)
-                    Log.d("crear","itemnuevo")
-                }
+
+        try {
+            if(arguments != null){
+                val bundleDesdeDetail = arguments?.getParcelable<ProductoApi>(SHOP_PRODUCT)!! //No hay persistencia en el array!
+
+                //Si no fallo mim bundle, y por lo tanto no es nulo
+                if(bundleDesdeDetail.id!=null){
+                    if ((products.find{it.id in idProducts})!=null){
+                        products[id].stock++
+                        Log.d("cantidad","cambiar")
+                        Log.d("Stock", products[id].stock.toString())
+                    }
+                    else{
+                        products.add(bundleDesdeDetail)
+                        idProducts.add(bundleDesdeDetail.id)
+                        Log.d("crear","itemnuevo")
+                    }
                     setUpRecyclerView(products)
+                }
             }
+
+        } catch (e : NullPointerException) {
+            println("No se pudo convertir, hubo un error: $e")
+        }
+
+
 }
 
 private fun replaceFragment(fragment: Fragment, bundle: Bundle?) {
