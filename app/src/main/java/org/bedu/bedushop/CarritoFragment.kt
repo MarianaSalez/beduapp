@@ -25,6 +25,8 @@ class CarritoFragment : Fragment() {
     private lateinit var mpName: TextView
     private lateinit var mpimg: ImageView
     private lateinit var mpPrice: TextView
+
+    //Esta es la lista de Productos que tenemos real en el carrito, por sus id
     private var products: MutableList<Int> = mutableListOf()
 
     override fun onCreateView(
@@ -49,71 +51,96 @@ class CarritoFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        val id= arguments?.getInt("idProd")
-        Log.d("argument", id.toString())
-    if(id!=null){
-        if ((products.find{it==id})!=null){
-            //llamo al producto con dicho id y aumento su cantidad en 1
-            products.add(id)
-        }
-        else{
-            //Aca hay que modificar el recyler view para que cree el elemento a partir del id del producto
-            setUpRecyclerView1(id)
 
-        }
+//Traigo como argumento el id del elemento que se agrego al carrito
+        val ids= arguments?.getInt("idProd")
+        Log.d("argument", ids.toString())
 
-    }
-
-    }
-
-    private fun replaceFragment(fragment: Fragment, bundle: Bundle?) {
-        fragment.arguments = bundle//Enviamos Bundle, de existir
-        val trans = requireActivity().supportFragmentManager.beginTransaction()
-        trans.replace(R.id.fragemento_contenedor, fragment)
-        trans.addToBackStack(null)
-        trans.commit()
-    }
+//Si no fallo mim bundle, y por lo tanto no es nulo
+            if(ids!=null){
+                if ((products.find{it==ids})!=null){
+                    Log.d("cantidad","cambiar")
+                }
+                else{
+                    products.add(ids)
+                    Log.d("crear","itemnuevo")
+                }
+                    setUpRecyclerView()
+}
 
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        /*val realm = Realm.getDefaultInstance()
-        products = realm.where(Product::class.java).findAll()
-        val product = intent.getIntExtra("id", 0)
-        var product = products[id].id
-        val marketObject =
-            supportFragmentManager.findFragmentById(R.id.recyclerCarrito) as? CarritoFragment
-        if (product != null) {
-            marketObject?.showInMarket(product, products)
-        }*/
-    }
+
+/*Si no fallo mim bundle, y por lo tanto no es nulo
+if(ids!=null){
+//Veo si ese elemento ya existe en mi carrito
+if ((products.find{it==ids})!=null){
+    //llamo al producto con dicho id y aumento su cantidad en 1
+
+val productoBuscado=bd.find{id==ids}
+    Log.d("buscado",productoBuscado.toString())
+
+// productoBuscado.cantidad=++
+
+}
+else{
+    //Aca hay que modificar el recyler view para que cree el elemento a partir del id del producto
+    setUpRecyclerView1(id)
+    //agrego el id en el producto para que no se cree dos veces
+    products.add(id)
+}
+
+}*/
+
+}
+
+private fun replaceFragment(fragment: Fragment, bundle: Bundle?) {
+fragment.arguments = bundle//Enviamos Bundle, de existir
+val trans = requireActivity().supportFragmentManager.beginTransaction()
+trans.replace(R.id.fragemento_contenedor, fragment)
+trans.addToBackStack(null)
+trans.commit()
+}
 
 
-        //funcion en proceso para linkear elementos on lo visual
+override fun onCreate(savedInstanceState: Bundle?) {
+super.onCreate(savedInstanceState)
+/*val realm = Realm.getDefaultInstance()
+products = realm.where(Product::class.java).findAll()
+val product = intent.getIntExtra("id", 0)
+var product = products[id].id
+val marketObject =
+    supportFragmentManager.findFragmentById(R.id.recyclerCarrito) as? CarritoFragment
+if (product != null) {
+    marketObject?.showInMarket(product, products)
+}*/
+}
 
-        fun showInMarket(id: Int, product: List<Product>) {
-            val producto=product[id]
-            view?.visibility = View.VISIBLE
-            mpName.text = producto.name
-           Picasso.with(requireContext()).load(producto.idImage).into(mpimg)
-           mpPrice.text = "$${producto.price}"
 
-        }
+//funcion en proceso para linkear elementos on lo visual
+
+fun showInMarket(id: Int, product: List<Product>) {
+    val producto=product[id]
+    view?.visibility = View.VISIBLE
+    mpName.text = producto.name
+   Picasso.with(requireContext()).load(producto.idImage).into(mpimg)
+   mpPrice.text = "$${producto.price}"
+
+}
 
 
-    private fun setUpRecyclerView1(id:Int) {
-        var listStr = this.arguments?.getString(MainApp.array)
-        val listProductType = object : TypeToken<MutableList<ProductoApi>>(){}.type
-        val prods = Gson().fromJson<MutableList<ProductoApi>>(listStr, listProductType)
-        //Log.d("setUpRecycler", prods.toString())
-        recyclerCarrito.setHasFixedSize(true)
-        recyclerCarrito.layoutManager = LinearLayoutManager(activity)
-        //seteando el Adapter
-        val testProd = prods[id]
-        //testProd.add(ProductoApi("Mochila", 21.50f, "Mochila test", rating(4.10,50), "https://http2.mlstatic.com/D_NQ_NP_746908-MLA46933276297_072021-O.webp"))
-       // testProd.add(ProductoApi("Mochila", 21.50f, "Mochila test", rating(4.10,50), "https://http2.mlstatic.com/D_NQ_NP_746908-MLA46933276297_072021-O.webp"))
-        mAdapter = RecyclerAdapterCarrito(requireActivity(), testProd)//esto es uma prueba
-        //asignando el Adapter al RecyclerView
-        recyclerCarrito.adapter = mAdapter
-    }
-    }
+private fun setUpRecyclerView() {
+var listStr = this.arguments?.getString(MainApp.array)
+val listProductType = object : TypeToken<MutableList<ProductoApi>>(){}.type
+val prods = Gson().fromJson<MutableList<ProductoApi>>(listStr, listProductType)
+//Log.d("setUpRecycler", prods.toString())
+recyclerCarrito.setHasFixedSize(true)
+recyclerCarrito.layoutManager = LinearLayoutManager(activity)
+//seteando el Adapter
+val testProd : MutableList<ProductoApi> = mutableListOf()
+testProd.add(ProductoApi(1,"Mochila", 21.50f, "Mochila test", rating(4.10,50), "https://http2.mlstatic.com/D_NQ_NP_746908-MLA46933276297_072021-O.webp"))
+testProd.add(ProductoApi(2,"Mochila", 21.50f, "Mochila test", rating(4.10,50), "https://http2.mlstatic.com/D_NQ_NP_746908-MLA46933276297_072021-O.webp"))
+mAdapter = RecyclerAdapterCarrito(requireActivity(), testProd)//esto es uma prueba
+//asignando el Adapter al RecyclerView
+recyclerCarrito.adapter = mAdapter
+}
+}
