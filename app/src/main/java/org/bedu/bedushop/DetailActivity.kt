@@ -58,11 +58,11 @@ class DetailActivity : AppCompatActivity() {
                     delay(200)
                 }
 
-            val intent= Intent(this, Shop::class.java).apply {
+            val intent= Intent(this, Shop::class.java).apply {}
             //DATOS EXTRA
             intent.putExtra("origen", "DETAIL")
-            putExtra(Intent.EXTRA_INDEX, product)
-            };
+            intent.putExtra("idProD", product)
+
 
             startActivity(intent)
 

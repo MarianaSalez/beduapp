@@ -99,22 +99,30 @@ class Shop : AppCompatActivity() {
         * Se es por Inicio seccion o registrar o DETAIL*/
         val origen : String? = intent.getStringExtra("origen")
 
-        if(origen == "DETAIL"){
+        when (origen) {
+            "DETAIL" -> {
+                val prodcutoDesdeCarrito :Int = intent.getIntExtra("id",0)
+                var bundle : Bundle = Bundle()
+                bundle.putInt("id",prodcutoDesdeCarrito)
+                replaceFragment(carritoFragment, bundle)
+                true
+            }
+            "COMPRA" -> {
+                replaceFragment(compraFragment, null)
+                true
+            }
+            else -> {
+                var bundle : Bundle = Bundle()
+                bundle.putString(SHOP_LIST, MainApp.array)
+                replaceFragment(listaFragment, bundle)
+                false
 
-            val prodcutoDesdeCarrito :Int = intent.getIntExtra("id",0)
-            var bundle : Bundle = Bundle()
-            bundle.putInt("idProd",prodcutoDesdeCarrito)
-            replaceFragment(carritoFragment, bundle)
+            }
 
-        }/*else if(origen == "COMPRA") {
-            replaceFragment(compraFragment, null)
-        }*/
-
-        else{
-            var bundle : Bundle = Bundle()
-            bundle.putString(SHOP_LIST, MainApp.array)
-            replaceFragment(listaFragment, bundle)
         }
+
+
+
 
 
         /*Controlador del navegador
