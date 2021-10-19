@@ -84,14 +84,14 @@ class Shop : AppCompatActivity() {
             setNotificationChannel()
         }
 
-        //!! Transition sin terminar para el detail
+
        val transitionXml = TransitionInflater.from(this).inflateTransition(R.transition.descripcion).apply {
             excludeTarget(window.decorView.findViewById<View>(R.id.action_bar_container), true)
             excludeTarget(android.R.id.statusBarBackground, true)
             excludeTarget(android.R.id.navigationBarBackground, true)
         }
         window.exitTransition = transitionXml
-        //!! Transition sin terminar para el detail
+
 
 
 
