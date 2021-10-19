@@ -26,8 +26,6 @@ class PagoExitosoFragment : Fragment() {
         val button = view.findViewById<Button>(R.id.btnFinal)
         button.setOnClickListener {
             replaceFragment(carritoFragment, null)
-
-            (activity as Shop).showBottomNav()
         }
 
 
