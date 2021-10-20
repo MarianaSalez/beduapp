@@ -40,6 +40,7 @@ import com.google.android.gms.location.LocationServices
 import com.google.android.material.progressindicator.LinearProgressIndicator
 import com.google.gson.Gson
 import io.realm.Realm
+import kotlinx.android.synthetic.main.activity_shop.*
 import kotlinx.android.synthetic.main.recycler_perfil.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -86,7 +87,7 @@ class Shop : AppCompatActivity() {
         }
 
 
-       val transitionXml = TransitionInflater.from(this).inflateTransition(R.transition.descripcion).apply {
+        val transitionXml = TransitionInflater.from(this).inflateTransition(R.transition.descripcion).apply {
             excludeTarget(window.decorView.findViewById<View>(R.id.action_bar_container), true)
             excludeTarget(android.R.id.statusBarBackground, true)
             excludeTarget(android.R.id.navigationBarBackground, true)
@@ -107,6 +108,7 @@ class Shop : AppCompatActivity() {
                 bundleCarrito.putParcelable(SHOP_PRODUCT, prodcutoDesdeCarrito)
                 replaceFragment(carritoFragment,
                     bundleCarrito)
+                bottom_navigation.selectedItemId = R.id.menu_carrito
 
                 Toast.makeText(this, "Producto Agregado", Toast.LENGTH_SHORT).show()
                 true
@@ -119,6 +121,7 @@ class Shop : AppCompatActivity() {
                 var bundle : Bundle = Bundle()
                 bundle.putString(SHOP_LIST, MainApp.array)
                 replaceFragment(listaFragment, bundle)
+                bottom_navigation.selectedItemId = R.id.ic_inicio
                 false
 
             }
@@ -160,12 +163,12 @@ class Shop : AppCompatActivity() {
                     val avatarBundle = preferences.getString(AVATAR,"default")
 
                     //las asignamos a nuestra colección y aplicamos
-                        var bundleFrag = Bundle()//Reasignamos datos de bundle
-                        bundleFrag.putString(USER_EMAIL_SHOP, emailBundle)
-                        bundleFrag.putString(USER_FULL_NAME_SHOP, nameBundle)
-                        bundleFrag.putString(USER_AVATAR_SHOP, avatarBundle)
-                        Log.d("Bundle Shop", bundleFrag.toString())
-                        replaceFragment(usuarioFragment, bundleFrag)
+                    var bundleFrag = Bundle()//Reasignamos datos de bundle
+                    bundleFrag.putString(USER_EMAIL_SHOP, emailBundle)
+                    bundleFrag.putString(USER_FULL_NAME_SHOP, nameBundle)
+                    bundleFrag.putString(USER_AVATAR_SHOP, avatarBundle)
+                    Log.d("Bundle Shop", bundleFrag.toString())
+                    replaceFragment(usuarioFragment, bundleFrag)
                     true
                 }
                 R.id.ic_inicio -> {
@@ -208,60 +211,60 @@ class Shop : AppCompatActivity() {
 
 
     }
-        override fun onOptionsItemSelected(item: MenuItem): Boolean {
-            // Handle item selection
-            return when (item.itemId) {
-                R.id.search -> {
-                    Toast.makeText(this, "Función no disponible", Toast.LENGTH_SHORT).show()
-                    true
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Handle item selection
+        return when (item.itemId) {
+            R.id.search -> {
+                Toast.makeText(this, "Función no disponible", Toast.LENGTH_SHORT).show()
+                true
 
-                }
-                R.id.help -> {
-                    val url = "https://www.bedu.org"
-                    val i = Intent(Intent.ACTION_VIEW)
-                    i.data = Uri.parse(url)
-                    startActivity(i)
-                    true
-                }
-                else -> super.onOptionsItemSelected(item)
             }
+            R.id.help -> {
+                val url = "https://www.bedu.org"
+                val i = Intent(Intent.ACTION_VIEW)
+                i.data = Uri.parse(url)
+                startActivity(i)
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
-        // Funcion que te levanta el fragment que se pasa por parametro
-        private fun replaceFragment(fragment: Fragment, bundle:Bundle?){
-            fragment.arguments = bundle//Enviamos Bundle, de existir
-            val trans = supportFragmentManager.beginTransaction()
-            trans.replace(R.id.fragemento_contenedor, fragment)
-            trans.addToBackStack(null)
-            trans.commit()
-        }
+    }
+    // Funcion que te levanta el fragment que se pasa por parametro
+    private fun replaceFragment(fragment: Fragment, bundle:Bundle?){
+        fragment.arguments = bundle//Enviamos Bundle, de existir
+        val trans = supportFragmentManager.beginTransaction()
+        trans.replace(R.id.fragemento_contenedor, fragment)
+        trans.addToBackStack(null)
+        trans.commit()
+    }
 
-        private fun getProductsList(fragment: Fragment, id: Int = 0){
+    private fun getProductsList(fragment: Fragment, id: Int = 0){
         var products: MutableList<ProductoApi> = mutableListOf()
         val retrofit: Retrofit = Retrofit.Builder()
             .baseUrl("https://fakestoreapi.com/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
         val service = retrofit.create<WebServices>(WebServices::class.java)
-            service.getAllProducts().enqueue(object : Callback<MutableList<ProductoApi>> {
+        service.getAllProducts().enqueue(object : Callback<MutableList<ProductoApi>> {
 
-               override fun onResponse(
-                    call: Call<MutableList<ProductoApi>>,
-                    response: Response<MutableList<ProductoApi>>
-                ) {
-                    products = response.body()!!
-                    Log.d("json?", products.toString())
-                    Log.i("GsonConverter", Gson().toJson(products))
-                    val json = Gson().toJson(products)
-                    var bundleFrag = Bundle()
-                    bundleFrag.putString(SHOP_LIST, json)
-                    replaceFragment(fragment, bundleFrag)
-                }
+            override fun onResponse(
+                call: Call<MutableList<ProductoApi>>,
+                response: Response<MutableList<ProductoApi>>
+            ) {
+                products = response.body()!!
+                Log.d("json?", products.toString())
+                Log.i("GsonConverter", Gson().toJson(products))
+                val json = Gson().toJson(products)
+                var bundleFrag = Bundle()
+                bundleFrag.putString(SHOP_LIST, json)
+                replaceFragment(fragment, bundleFrag)
+            }
 
-                override fun onFailure(call: Call<MutableList<ProductoApi>>, t: Throwable) {
-                    t.printStackTrace()
-                }
+            override fun onFailure(call: Call<MutableList<ProductoApi>>, t: Throwable) {
+                t.printStackTrace()
+            }
 
-            })
+        })
 
         /*else if(fragment == carritoFragment){
             service.getProduct(id).enqueue(object: Callback<ProductoApi> {
@@ -283,20 +286,20 @@ class Shop : AppCompatActivity() {
         }*/
     }
 
-        override fun onCreateOptionsMenu(menu: Menu): Boolean {
-            val inflater: MenuInflater = menuInflater
-            inflater.inflate(R.menu.menu_superior, menu)
-            return true
-        }
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val inflater: MenuInflater = menuInflater
+        inflater.inflate(R.menu.menu_superior, menu)
+        return true
+    }
 
     //funcion para activar la barrita de loading en los diferentes fragments
-        private fun loading(progressBar: LinearProgressIndicator){
-            progressBar.isVisible=true
-            AnimatorInflater.loadAnimator(this, R.animator.loading_bar).apply {
-                setTarget(progressBar)
-                start()
-            }
+    private fun loading(progressBar: LinearProgressIndicator){
+        progressBar.isVisible=true
+        AnimatorInflater.loadAnimator(this, R.animator.loading_bar).apply {
+            setTarget(progressBar)
+            start()
         }
+    }
 
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -354,4 +357,4 @@ class Shop : AppCompatActivity() {
         bottomNavigation.visibility = View.VISIBLE
     }
 
-    }
+}
