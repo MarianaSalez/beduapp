@@ -190,42 +190,42 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_begin="29dp" />
+            app:layout_constraintGuide_begin="41dp" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline30"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_begin="335dp" />
+            app:layout_constraintGuide_begin="324dp" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline31"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_begin="400dp" />
+            app:layout_constraintGuide_begin="374dp" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline32"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_begin="534dp" />
+            app:layout_constraintGuide_begin="481dp" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline33"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_begin="617dp" />
+            app:layout_constraintGuide_begin="560dp" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline34"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_begin="383dp" />
+            app:layout_constraintGuide_begin="360dp" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

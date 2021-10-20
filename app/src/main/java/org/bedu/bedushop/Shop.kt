@@ -323,7 +323,7 @@ class Shop : AppCompatActivity() {
 
         val intent = Intent(this, Shop::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-            intent.putExtra("origen", "COMPRA")
+            //intent.putExtra("origen", "COMPRA")
         }
         val pendingIntent: PendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
 
