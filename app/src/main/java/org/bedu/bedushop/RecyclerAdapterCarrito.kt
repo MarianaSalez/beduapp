@@ -33,6 +33,18 @@ class RecyclerAdapterCarrito (private val context: Context,
             Picasso.with(context).load(product.image).into(image)
             price.text = product.price.toString()
             stock.text = product.stock.toString()
+            sumar.setOnClickListener{
+                product.stock++
+                stock.text = product.stock.toString()
+            }
+            restar.setOnClickListener {
+                product.stock--
+                if(product.stock <= 0){
+                    MainApp.listaCarritoHolder?.remove(product)
+                    MainApp.listaCarritoHolderId?.remove(product.id)
+                }
+                stock.text = product.stock.toString()
+            }
         }
 
     }
@@ -51,7 +63,7 @@ class RecyclerAdapterCarrito (private val context: Context,
 
     override fun getItemCount(): Int {
 
-     return products.size
+        return products.size
     }
 
 }

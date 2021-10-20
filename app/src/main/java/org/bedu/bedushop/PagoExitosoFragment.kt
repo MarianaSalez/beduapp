@@ -1,6 +1,7 @@
 package org.bedu.bedushop
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -14,7 +15,8 @@ class PagoExitosoFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        MainApp.listaCarritoHolder?.clear()
+        MainApp.listaCarritoHolderId?.clear()
     }
 
     override fun onCreateView(
@@ -26,6 +28,7 @@ class PagoExitosoFragment : Fragment() {
         val button = view.findViewById<Button>(R.id.btnFinal)
         button.setOnClickListener {
             replaceFragment(carritoFragment, null)
+            (activity as Shop).showBottomNav()
         }
 
 

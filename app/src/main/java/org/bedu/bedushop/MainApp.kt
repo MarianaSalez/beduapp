@@ -19,15 +19,17 @@ import retrofit2.converter.gson.GsonConverterFactory
 class MainApp: Application() {
     companion object{
         var array : String = String()
+        var listaCarritoHolder = CarritoHolder.instance?.listaCarrito
+        var listaCarritoHolderId = CarritoHolderId.instance?.listaCarritoId
     }
     override fun onCreate(){
         super.onCreate()
         //Aca Tengo que ver como es lo de networking que habua visto pablo
-         getProductsList()
+        getProductsList()
     }
 
 
-//Esta funcion esta relacionada con obtener los datos para el val array
+    //Esta funcion esta relacionada con obtener los datos para el val array
     fun getJsonFile():String{
         return applicationContext
             .assets
