@@ -15,6 +15,8 @@ import android.widget.Button
 import android.widget.Toast
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.material.textfield.TextInputEditText
+import org.bedu.bedushop.registerValidation.validarForm
+
 
 class Registrar : AppCompatActivity() {
 
@@ -30,7 +32,6 @@ class Registrar : AppCompatActivity() {
         setContentView(R.layout.activity_registrar)
 
 
-
         name= findViewById(R.id.completeNameR)
         mail= findViewById(R.id.editTextEmailR)
         phone=findViewById(R.id.phoneR)
@@ -38,28 +39,11 @@ class Registrar : AppCompatActivity() {
 
         registro = findViewById(R.id.btnRegistrar)
 
-        // Funcion que valida los datos del formulario de registro
-        fun validarForm(): Boolean {
-            var esValido = true
-
-            fun validarDato(var1:TextInputEditText) {
-                if (TextUtils.isEmpty(var1.getText())) {
-                var1.error = getString(R.string.requerido)
-                esValido = false
-            } else var1.error = null
-            }
-
-            validarDato(name)
-            validarDato(mail)
-            validarDato(phone)
-            validarDato(pass)
-            return esValido
-        }
 
         // Boton de registrar, valida el formulario y te envia el Inicio de Seccion
         registro.setOnClickListener{
 
-            if(validarForm()){
+            if(validarForm(name.toString(),mail.toString(),phone.toString(),pass.toString())){
                 val intent=Intent(this, MainActivity::class.java).apply {  }
                 startActivity(intent)
                 overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left)
@@ -68,6 +52,7 @@ class Registrar : AppCompatActivity() {
 
 
         }
+
     override fun finish() {
         super.finish()
         overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right)
