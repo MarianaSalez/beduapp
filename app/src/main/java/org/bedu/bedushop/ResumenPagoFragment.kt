@@ -29,14 +29,18 @@ class ResumenPagoFragment : Fragment() {
         val totalTv = view.findViewById<TextView>(R.id.totalTv)
         val envioTv=view.findViewById<TextView>(R.id.envioTv)
 
-        subtotalTv.text = calcularSubtotal().toString()
+        val valorFinal : Float
+        val total = calcularSubtotal()
+        subtotalTv.text = "$%.2f".format(total)
             if (calcularSubtotal()>1000f){
                 envioTv.text="$%.2f".format(0f)
-                totalTv.text=subtotalTv.text
+                valorFinal = total
+                totalTv.text= "$%.2f".format(valorFinal)
             }
             else{
                 envioTv.text="$%.2f".format(30f)
-                totalTv.text = "$%.2f".format(calcularSubtotal())+ envioTv.text
+                valorFinal = total + 30f
+                totalTv.text = "$%.2f".format(valorFinal)
             }
 
 
@@ -44,10 +48,10 @@ class ResumenPagoFragment : Fragment() {
         button.setOnClickListener {
             replaceFragment(pago, null)
             if (calcularSubtotal()>1000f){
-                (activity as Shop).compraNotification(getString(R.string.envioGratis))
+                (activity as Shop).compraNotification(getString(R.string.envioGratis), valorFinal)
             }
             else{
-                (activity as Shop).compraNotification(getString(R.string.body))
+                (activity as Shop).compraNotification(getString(R.string.body),valorFinal)
             }
         }
         super.onViewCreated(view, savedInstanceState)

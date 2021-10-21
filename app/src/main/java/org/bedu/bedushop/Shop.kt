@@ -57,6 +57,7 @@ const val SHOP_LIST = "org.bedu.bedushop.SHOP_LIST"
 const val PRODUCTO_ID = "org.bedu.bedushop.PRODUCTO_ID"
 val CHANNEL_OTHERS = "OTROS"
 const val SHOP_PRODUCT = "org.bedu.bedushop.SHOP_PRODUCT"
+const val RESUMEN_VALOR = "org.bedu.bedushop.RESUMEN_VALOR"
 
 //PREFERENCIAS
 val PREFS_NAME = "org.bedu.bedushop"
@@ -69,6 +70,9 @@ class Shop : AppCompatActivity() {
     private  var usuarioFragment= UsuarioFragment()
     private  var listaFragment= ListadoFragment()
     private  var carritoFragment= CarritoFragment()
+    private  var pagoExitosoFragment = ResumenPagoFragment()
+    private  var resumenNotificacion= ResumenNotificacionFragment()
+
     private lateinit var menuSuperior: Menu
     private lateinit var progressBar: LinearProgressIndicator
     lateinit var preferences: SharedPreferences
@@ -96,7 +100,6 @@ class Shop : AppCompatActivity() {
 
 
 
-
         /*Inicializa frament segun su origen
         * Se es por Inicio seccion o registrar o DETAIL*/
         val origen : String? = intent.getStringExtra("origen")
@@ -114,7 +117,14 @@ class Shop : AppCompatActivity() {
                 true
             }
             "COMPRA" -> {
-                replaceFragment(compraFragment, null)
+                val valorCompra : String? = intent.getStringExtra("valorCompra")
+
+                var bundleFrag = Bundle()//Reasignamos datos de bundle
+                bundleFrag.putString(RESUMEN_VALOR, valorCompra)
+
+
+
+                replaceFragment(resumenNotificacion, bundleFrag)
                 true
             }
             else -> {
@@ -318,13 +328,15 @@ class Shop : AppCompatActivity() {
     }
 
 
-    fun compraNotification(mensaje:String){
+    fun compraNotification(mensaje:String,valorCompra: Float){
 
 
         val intent = Intent(this, Shop::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-            //intent.putExtra("origen", "COMPRA")
         }
+        intent.putExtra("origen", "COMPRA")
+        intent.putExtra("valorCompra", valorCompra.toString())
+
         val pendingIntent: PendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
 
 
