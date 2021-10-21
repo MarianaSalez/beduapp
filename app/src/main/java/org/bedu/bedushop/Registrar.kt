@@ -1,5 +1,6 @@
 package org.bedu.bedushop
 
+import android.app.Activity
 import android.app.ActivityOptions
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -42,16 +43,15 @@ class Registrar : AppCompatActivity() {
 
         // Boton de registrar, valida el formulario y te envia el Inicio de Seccion
         registro.setOnClickListener{
-
-            if(validarForm(name.toString(),mail.toString(),phone.toString(),pass.toString())){
+            if(validarForm(name,mail,phone,pass)){
                 val intent=Intent(this, MainActivity::class.java).apply {  }
                 startActivity(intent)
                 overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left)
             }
-            }
-
-
         }
+
+
+    }
 
     override fun finish() {
         super.finish()
