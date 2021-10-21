@@ -21,6 +21,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
+import com.google.android.material.button.MaterialButton
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.squareup.picasso.Picasso
@@ -46,13 +47,15 @@ class UsuarioFragment : Fragment() {
     private lateinit var txtUser : TextView
     private lateinit var txtEmail : TextView
     private lateinit var imgUser : ImageView
-
+    private lateinit var cerrarSesion : Button
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+
 
 
         // Inflate the layout for this fragment
@@ -79,6 +82,11 @@ class UsuarioFragment : Fragment() {
         txtUser = view.findViewById(R.id.namePerfil)
         txtEmail = view.findViewById(R.id.emailPerfil)
         imgUser = view.findViewById(R.id.imgPerfil)
+        cerrarSesion = view.findViewById(R.id.cerrarSesion)
+
+        cerrarSesion.setOnClickListener {
+            (activity as Shop).cerrarSesion()
+        }
 
         //Recuperamos datos del bundle desde la actividad shop
         val userMail = this.arguments?.getString(USER_EMAIL_SHOP)

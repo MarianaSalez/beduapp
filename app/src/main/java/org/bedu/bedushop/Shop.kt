@@ -85,12 +85,12 @@ class Shop : AppCompatActivity() {
         progressBar=findViewById(R.id.loadingBar)
         preferences = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
 
-
+        //canal de notificacion seteado
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             setNotificationChannel()
         }
 
-
+        //transicion de cada detail
         val transitionXml = TransitionInflater.from(this).inflateTransition(R.transition.descripcion).apply {
             excludeTarget(window.decorView.findViewById<View>(R.id.action_bar_container), true)
             excludeTarget(android.R.id.statusBarBackground, true)
@@ -371,4 +371,11 @@ class Shop : AppCompatActivity() {
         bottomNavigation.visibility = View.VISIBLE
     }
 
+
+
+    fun cerrarSesion(){
+
+        val cerrar = Intent(applicationContext, MainActivity::class.java)
+        startActivity(cerrar)
+    }
 }
