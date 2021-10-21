@@ -27,13 +27,28 @@ class ResumenPagoFragment : Fragment() {
         val button = view.findViewById<Button>(R.id.btnPagar)
         val subtotalTv = view.findViewById<TextView>(R.id.subtotalTv)
         val totalTv = view.findViewById<TextView>(R.id.totalTv)
+        val envioTv=view.findViewById<TextView>(R.id.envioTv)
 
         subtotalTv.text = calcularSubtotal().toString()
-        totalTv.text = "$%.2f".format(calcularSubtotal() + 30f)
+            if (calcularSubtotal()>1000f){
+                envioTv.text="$%.2f".format(0f)
+                totalTv.text=subtotalTv.text
+            }
+            else{
+                envioTv.text="$%.2f".format(30f)
+                totalTv.text = "$%.2f".format(calcularSubtotal())+ envioTv.text
+            }
+
+
 
         button.setOnClickListener {
             replaceFragment(pago, null)
-            (activity as Shop).compraNotification()
+            if (calcularSubtotal()>1000f){
+                (activity as Shop).compraNotification(getString(R.string.envioGratis))
+            }
+            else{
+                (activity as Shop).compraNotification(getString(R.string.body))
+            }
         }
         super.onViewCreated(view, savedInstanceState)
         (activity as Shop).hideBottomNav()

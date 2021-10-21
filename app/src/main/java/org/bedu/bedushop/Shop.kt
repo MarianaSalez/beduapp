@@ -318,7 +318,7 @@ class Shop : AppCompatActivity() {
     }
 
 
-    fun compraNotification(){
+    fun compraNotification(mensaje:String){
 
 
         val intent = Intent(this, Shop::class.java).apply {
@@ -332,10 +332,12 @@ class Shop : AppCompatActivity() {
         var builder = NotificationCompat.Builder(this, CHANNEL_OTHERS)
             .setSmallIcon(R.drawable.bedu) //seteamos el ícono de la push notification
             .setContentTitle(getString(R.string.title)) //seteamos el título de la notificación
-            .setContentText(getString(R.string.body)) //seteamos el cuerpo de la notificación
+            .setContentText(mensaje) //seteamos el cuerpo de la notificación
             .setPriority(NotificationCompat.PRIORITY_DEFAULT) //Ponemos una prioridad por defecto
             .setContentIntent(pendingIntent) //se define aquí el content intend
             .setAutoCancel(true)
+            .setStyle(NotificationCompat.BigTextStyle()
+                .bigText(mensaje))
 
         //lanzamos la notificación
         with(NotificationManagerCompat.from(this)) {

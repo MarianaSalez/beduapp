@@ -49,5 +49,16 @@
     <string name="title">Compra realizada</string>
     <string name="body">Tu pedido llegara en una semana</string>
     <string name="bedu">Bedu shop</string>
+    <string name="datos_de_pago">Datos de pago</string>
+    <string name="direccion_actual">Direccion actual</string>
+    <string name="metodo_de_pago_actual">Metodo de pago actual</string>
+    <string name="resumen">Resumen</string>
+    <string name="subtotal">Subtotal</string>
+    <string name="envio">Envio</string>
+    <string name="total">Total</string>
+    <string name="subtotalNum">subtotal</string>
+    <string name="envioNum">$30.00</string>
+    <string name="totalNum">total</string>
+    <string name="envioGratis">Gracias por elegir ser parte de la comunidad Bedu. El envio corre por cuenta nuestra!</string>
 
 </resources>
