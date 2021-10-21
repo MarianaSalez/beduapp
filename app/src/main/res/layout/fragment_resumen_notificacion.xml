@@ -21,6 +21,7 @@
             android:textColor="@color/black"
             android:textSize="25dp"
             android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/guideline36"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
@@ -35,10 +36,11 @@
             android:textColor="@color/black"
             android:textSize="25dp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/imageView4"
+            app:layout_constraintBottom_toTopOf="@+id/guideline39"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/totalTvNotificacion" />
+            app:layout_constraintTop_toBottomOf="@+id/totalTvNotificacion"
+            app:layout_constraintVertical_bias="1.0" />
 
         <TextView
             android:id="@+id/textView6"
@@ -49,6 +51,7 @@
             android:textAllCaps="false"
             android:textColor="@color/black"
             android:textSize="24sp"
+            app:layout_constraintBottom_toTopOf="@+id/guideline37"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
@@ -58,34 +61,72 @@
             android:id="@+id/btnVolverCarrito"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:layout_marginBottom="72dp"
             android:text="Menu Principal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
         <TextView
             android:id="@+id/totalTvNotificacion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="20dp"
             android:text="total"
             android:textColor="@color/black"
             android:textSize="17dp"
+            app:layout_constraintBottom_toTopOf="@+id/guideline38"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView6" />
+            app:layout_constraintTop_toBottomOf="@+id/textView6"
+            app:layout_constraintVertical_bias="1.0" />
 
         <ImageView
             android:id="@+id/imageView4"
             android:layout_width="174dp"
             android:layout_height="241dp"
-            android:layout_marginBottom="36dp"
             android:src="@drawable/carrito_compra_resumen"
-            app:layout_constraintBottom_toTopOf="@+id/btnVolverCarrito"
+            app:layout_constraintBottom_toTopOf="@+id/guideline40"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline36"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="98dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline37"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="166dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline38"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="221dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline39"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="309dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline40"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="584dp" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
