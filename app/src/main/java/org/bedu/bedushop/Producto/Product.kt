@@ -1,4 +1,4 @@
-package org.bedu.bedushop
+package org.bedu.bedushop.Producto
 
 import android.os.Parcel
 import android.os.Parcelable

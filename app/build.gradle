@@ -6,8 +6,10 @@ plugins {
     id 'realm-android'
 }
 
+
 android {
     compileSdk 30
+
 
     defaultConfig {
         applicationId "org.bedu.bedushop"

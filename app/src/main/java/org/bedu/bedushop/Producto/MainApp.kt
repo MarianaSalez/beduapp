@@ -1,14 +1,10 @@
-package org.bedu.bedushop
+package org.bedu.bedushop.Producto
 
 import android.app.Application
-import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import com.google.gson.Gson
-import io.realm.Realm
-import io.realm.RealmConfiguration
-import org.json.JSONArray
-import org.json.JSONObject
+import org.bedu.bedushop.shop.carrito.CarritoHolder
+import org.bedu.bedushop.shop.carrito.CarritoHolderId
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

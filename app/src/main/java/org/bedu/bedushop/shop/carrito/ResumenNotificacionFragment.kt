@@ -1,13 +1,15 @@
-package org.bedu.bedushop
+package org.bedu.bedushop.shop.carrito
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import org.bedu.bedushop.R
+import org.bedu.bedushop.shop.RESUMEN_VALOR
+import org.bedu.bedushop.shop.Shop
 
 
 class ResumenNotificacionFragment : Fragment() {

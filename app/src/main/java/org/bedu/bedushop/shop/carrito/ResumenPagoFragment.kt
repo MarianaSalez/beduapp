@@ -1,6 +1,5 @@
-package org.bedu.bedushop
+package org.bedu.bedushop.shop.carrito
 
-import android.app.Activity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,6 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import org.bedu.bedushop.Producto.MainApp
+import org.bedu.bedushop.R
+import org.bedu.bedushop.shop.Shop
 
 
 class ResumenPagoFragment : Fragment() {

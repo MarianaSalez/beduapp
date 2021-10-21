@@ -1,8 +1,6 @@
-package org.bedu.bedushop
+package org.bedu.bedushop.shop.carrito
 
-import org.bedu.bedushop.ProductoApi
-import org.bedu.bedushop.CarritoHolder
-import java.util.ArrayList
+import org.bedu.bedushop.Producto.ProductoApi
 
 class CarritoHolder private constructor() {
     val listaCarrito: MutableList<ProductoApi> = mutableListOf()

@@ -1,4 +1,4 @@
-package org.bedu.bedushop
+package org.bedu.bedushop.shop.usuario
 
 data class Opciones (
     var opcion: String,

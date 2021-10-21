@@ -1,22 +1,12 @@
-package org.bedu.bedushop
+package org.bedu.bedushop.Inicio
 
-import android.app.Activity
-import android.app.ActivityOptions
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import androidx.core.app.ActivityCompat.startActivityForResult
 import android.content.Intent
-import android.text.TextUtils
-import android.transition.Slide
-import android.transition.TransitionInflater
-import android.view.Gravity
-import android.view.View
 import android.widget.Button
-import android.widget.Toast
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.material.textfield.TextInputEditText
-import org.bedu.bedushop.registerValidation.validarForm
+import org.bedu.bedushop.Inicio.registerValidation.validarForm
+import org.bedu.bedushop.R
 
 
 class Registrar : AppCompatActivity() {
@@ -46,7 +36,7 @@ class Registrar : AppCompatActivity() {
             if(validarForm(name,mail,phone,pass)){
                 val intent=Intent(this, MainActivity::class.java).apply {  }
                 startActivity(intent)
-                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left)
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
             }
         }
 
@@ -55,7 +45,7 @@ class Registrar : AppCompatActivity() {
 
     override fun finish() {
         super.finish()
-        overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right)
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
     }
 }
 

@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/carritoFragment"
-        android:name="org.bedu.bedushop.CarritoFragment"
+        android:name="org.bedu.bedushop.shop.carrito.CarritoFragment"
         android:label="fragment_carrito"
         tools:layout="@layout/fragment_carrito" >
         <action
@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/usuarioFragment"
-        android:name="org.bedu.bedushop.UsuarioFragment"
+        android:name="org.bedu.bedushop.shop.usuario.UsuarioFragment"
         android:label="fragment_usuario"
         tools:layout="@layout/fragment_usuario" >
         <action
@@ -31,7 +31,7 @@
     </fragment>
     <fragment
         android:id="@+id/listadoFragment"
-        android:name="org.bedu.bedushop.ListadoFragment"
+        android:name="org.bedu.bedushop.shop.listado.ListadoFragment"
         android:label="fragment_listado"
         tools:layout="@layout/fragment_listado" >
         <action
@@ -46,7 +46,7 @@
     </fragment>
     <fragment
         android:id="@+id/resumenPagoFragment"
-        android:name="org.bedu.bedushop.ResumenPagoFragment"
+        android:name="org.bedu.bedushop.shop.carrito.ResumenPagoFragment"
         android:label="fragment_resumen_pago"
         tools:layout="@layout/fragment_resumen_pago" />
 </navigation>

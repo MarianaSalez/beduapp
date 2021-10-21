@@ -1,4 +1,4 @@
-package org.bedu.bedushop
+package org.bedu.bedushop.shop.usuario
 
 data class User (
     val id: Int ?= 0,

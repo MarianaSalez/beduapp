@@ -5,10 +5,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Shop">
+    tools:context=".shop.Shop">
     <fragment
         android:id="@+id/fragmentList"
-        class="org.bedu.bedushop.ListadoFragment"
+        class="org.bedu.bedushop.shop.listado.ListadoFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </LinearLayout>

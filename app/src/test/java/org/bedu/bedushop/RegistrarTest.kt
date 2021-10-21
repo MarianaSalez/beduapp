@@ -1,6 +1,7 @@
 package org.bedu.bedushop
 
 import com.google.common.truth.Truth.assertThat
+import org.bedu.bedushop.Inicio.registerValidation
 import org.junit.Test
 
 class RegistrarTest{

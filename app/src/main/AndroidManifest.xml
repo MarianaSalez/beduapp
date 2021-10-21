@@ -6,7 +6,7 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
     <application
-        android:name=".MainApp"
+        android:name=".Producto.MainApp"
         android:allowBackup="true"
         android:icon="@drawable/bedu"
         android:label="@string/app_name"
@@ -14,16 +14,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BEDUSHOP" >
         <activity
-            android:name=".DetailActivity"
+            android:name=".shop.listado.DetailActivity"
             android:exported="true" />
         <activity
-            android:name=".Shop"
+            android:name=".shop.Shop"
             android:exported="true" />
         <activity
-            android:name=".Registrar"
+            android:name=".Inicio.Registrar"
             android:exported="true" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Inicio.MainActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

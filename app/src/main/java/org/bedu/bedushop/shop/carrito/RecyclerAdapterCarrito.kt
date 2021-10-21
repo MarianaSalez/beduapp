@@ -1,20 +1,17 @@
-package org.bedu.bedushop
+package org.bedu.bedushop.shop.carrito
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 import com.squareup.picasso.Picasso
-import io.realm.Realm
-import kotlinx.android.synthetic.main.fragment_carrito.*
+import org.bedu.bedushop.Producto.MainApp
+import org.bedu.bedushop.Producto.ProductoApi
+import org.bedu.bedushop.R
 
 class RecyclerAdapterCarrito (private val context: Context,
                               private var products: MutableList<ProductoApi>): RecyclerView.Adapter<RecyclerAdapterCarrito.ViewHolder>(){
@@ -22,7 +19,8 @@ class RecyclerAdapterCarrito (private val context: Context,
         private val title = view.findViewById<TextView>(R.id.titleCarrito)
         private val price = view.findViewById<TextView>(R.id.priceCarrito)
         private val image = view.findViewById<ImageView>(
-            R.id.carritoImageView)
+            R.id.carritoImageView
+        )
         private val stock = view.findViewById<TextView>(R.id.cantidad)
         private val sumar = view.findViewById<ImageButton>(R.id.sumar)
         private val restar = view.findViewById<ImageButton>(R.id.restar)

@@ -1,15 +1,7 @@
-package org.bedu.bedushop
+package org.bedu.bedushop.Inicio
 
-import android.app.Activity
-import android.content.Context
-import android.text.Layout
-import android.text.TextUtils
-import android.view.View
-import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.widget.doOnTextChanged
-import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
-import kotlin.coroutines.coroutineContext
 
 /*
 * Test que debe pasar:

@@ -10,7 +10,7 @@
     android:orientation="vertical"
     tools:layout_editor_absoluteX="1dp"
     tools:layout_editor_absoluteY="1dp"
-    tools:context=".MainActivity"
+    tools:context=".Inicio.MainActivity"
     tools:ignore="ExtraText"
     android:id="@+id/loginLayout"
     >

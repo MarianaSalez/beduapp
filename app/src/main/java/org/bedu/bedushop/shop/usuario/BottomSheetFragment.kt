@@ -1,8 +1,7 @@
-package org.bedu.bedushop
+package org.bedu.bedushop.shop.usuario
 
 import android.Manifest
 import android.annotation.SuppressLint
-import android.app.Activity
 import android.content.Context
 import android.content.pm.PackageManager
 import android.location.LocationManager
@@ -13,14 +12,12 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat.getSystemService
-import androidx.core.location.LocationManagerCompat.isLocationEnabled
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import android.content.DialogInterface
 import android.location.Address
 import android.location.Geocoder
+import org.bedu.bedushop.R
 import java.util.*
 
 

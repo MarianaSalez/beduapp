@@ -1,8 +1,6 @@
-package org.bedu.bedushop
+package org.bedu.bedushop.shop
 
-import android.Manifest
 import android.animation.AnimatorInflater
-import android.annotation.SuppressLint
 import android.app.ActivityOptions
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -10,15 +8,11 @@ import android.app.PendingIntent
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.AttributeSet
 import androidx.fragment.app.Fragment
 //import androidx.navigation.findNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import android.content.Intent
 import android.content.SharedPreferences
-import android.content.pm.PackageManager
-import android.location.Geocoder
-import android.location.LocationManager
 import android.net.Uri
 import android.os.Build
 import android.transition.TransitionInflater
@@ -26,28 +20,32 @@ import android.util.Log
 import android.view.*
 import android.widget.*
 import androidx.annotation.RequiresApi
-import androidx.core.app.ActivityCompat
-import androidx.core.app.ActivityOptionsCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
-import androidx.core.content.ContentProviderCompat.requireContext
-import androidx.core.content.ContextCompat.startActivity
-import androidx.core.os.bundleOf
-import androidx.core.view.ViewCompat
 import androidx.core.view.isVisible
-import com.google.android.gms.location.FusedLocationProviderClient
-import com.google.android.gms.location.LocationServices
 import com.google.android.material.progressindicator.LinearProgressIndicator
 import com.google.gson.Gson
-import io.realm.Realm
 import kotlinx.android.synthetic.main.activity_shop.*
-import kotlinx.android.synthetic.main.recycler_perfil.*
+import org.bedu.bedushop.Inicio.MainActivity
+import org.bedu.bedushop.Inicio.USER_AVATAR
+import org.bedu.bedushop.Inicio.USER_EMAIL
+import org.bedu.bedushop.Inicio.USER_FULL_NAME
+import org.bedu.bedushop.Producto.MainApp
+import org.bedu.bedushop.Producto.ProductoApi
+import org.bedu.bedushop.R
+import org.bedu.bedushop.Producto.WebServices
+import org.bedu.bedushop.shop.carrito.CarritoFragment
+import org.bedu.bedushop.shop.carrito.ResumenNotificacionFragment
+import org.bedu.bedushop.shop.carrito.ResumenPagoFragment
+import org.bedu.bedushop.shop.listado.DetailActivity
+import org.bedu.bedushop.shop.listado.DetailFragment
+import org.bedu.bedushop.shop.listado.ListadoFragment
+import org.bedu.bedushop.shop.usuario.UsuarioFragment
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.util.*
 
 //Asignamos nuevas variables globales
 const val USER_EMAIL_SHOP = "org.bedu.bedushop.USER_EMAIL_SHOP"

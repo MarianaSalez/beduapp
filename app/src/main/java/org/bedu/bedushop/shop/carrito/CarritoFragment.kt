@@ -1,24 +1,18 @@
-package org.bedu.bedushop
+package org.bedu.bedushop.shop.carrito
 
-import android.content.Context
-import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.AttributeSet
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import androidx.core.view.isVisible
-import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
-import com.squareup.picasso.Picasso
-import io.realm.Realm
 import kotlinx.android.synthetic.main.fragment_carrito.*
+import org.bedu.bedushop.Producto.MainApp
+import org.bedu.bedushop.Producto.ProductoApi
+import org.bedu.bedushop.R
+import org.bedu.bedushop.shop.SHOP_PRODUCT
 
 
 class CarritoFragment : Fragment() {

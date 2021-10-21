@@ -1,20 +1,19 @@
-package org.bedu.bedushop
+package org.bedu.bedushop.shop.listado
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.transition.Slide
 import android.view.Gravity
-import android.view.Menu
 import android.view.View
 import android.widget.Button
-import android.widget.ImageView
-import androidx.fragment.app.Fragment
 import com.airbnb.lottie.LottieAnimationView
-import io.realm.Realm
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
-import org.bedu.bedushop.Product
+import org.bedu.bedushop.Producto.ProductoApi
+import org.bedu.bedushop.R
+import org.bedu.bedushop.shop.Shop
+import org.bedu.bedushop.shop.carrito.CarritoFragment
 
 class DetailActivity : AppCompatActivity() {
     companion object {

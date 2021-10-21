@@ -1,4 +1,4 @@
-package org.bedu.bedushop
+package org.bedu.bedushop.Producto
 
 import android.os.Parcel
 import android.os.Parcelable
@@ -18,7 +18,7 @@ class ProductoApi (
         parcel.readString()!!,
         parcel.readFloat()!!,
         parcel.readString()!!,
-        parcel.readParcelable(org.bedu.bedushop.rating::class.java.classLoader)!!,
+        parcel.readParcelable(org.bedu.bedushop.Producto.rating::class.java.classLoader)!!,
         parcel.readString()!!,
         parcel.readInt()
 

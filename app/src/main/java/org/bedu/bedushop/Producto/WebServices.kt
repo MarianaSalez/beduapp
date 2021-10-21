@@ -1,6 +1,7 @@
-package org.bedu.bedushop
+package org.bedu.bedushop.Producto
 
 
+import org.bedu.bedushop.Producto.ProductoApi
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
