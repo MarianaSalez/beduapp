@@ -18,7 +18,7 @@ producto y agregarlo al carrito), un carrito que contiene los productos seleccio
 Además, se cuenta con un menu superior sin funcionalidad momentanea de la opcion de busqueda, pero con acceso a la pagina de BEDU.
 
 
-<div align="center"><img src="images/Flujo app grafico.JPG" width="40%"></div>
+<div align="center"><img src="Images/Flujo app grafico.JPG" width="40%"></div>
 
 ### TECNOLOGIAS UTILIZADAS 🔧
 
@@ -40,6 +40,6 @@ Se utilizaron dependencias:
 * junit para testing
 
 ## EJECUCION DE LA APP ⚙️
-<div align="center"><img src="images/DEMO-BEDUSHOP (1).gif" width="50%" ></div>
+<div align="center"><img src="Images/DEMO-BEDUSHOP (1).gif" width="50%" ></div>
 
 
