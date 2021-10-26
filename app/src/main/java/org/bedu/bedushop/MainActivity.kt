@@ -40,26 +40,13 @@ class MainActivity : AppCompatActivity() {
     private lateinit var inicio: Button
     private lateinit var layout: LinearLayout
 
-    private lateinit var products: List<Product>
+    private lateinit var products: List<ProductoApi>
     //Flag para inicio sesión
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        //Llamo al Real para construir los productos cuando se inicia la app aunque no los use en esta pantalla
-
-
-        //TODO: Checkear como resetear logInFlag cuando se regrese a menú de logIn
-
-        //! TRANSITIONS A MEJORAR(SOLVED)
-        /* val transitionXml = TransitionInflater.from(this).inflateTransition(R.transition.login).apply {
-            excludeTarget(window.decorView.findViewById<View>(R.id.action_bar_container), true)
-            excludeTarget(android.R.id.statusBarBackground, true)
-            excludeTarget(android.R.id.navigationBarBackground, true)
-        }
-        window.exitTransition = transitionXml
-        //! TRANSITIONS A MEJORAR*/
 
         //cargo los datos del login
         mail = findViewById(R.id.editTextEmail)
@@ -117,8 +104,6 @@ class MainActivity : AppCompatActivity() {
 
             return flag
         }
-
-
 
 
         //valido que los datos del login no encuentren vacios, limitando el tipo de entrado

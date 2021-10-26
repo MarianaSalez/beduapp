@@ -205,15 +205,7 @@ class Shop : AppCompatActivity() {
                 val intent = Intent(this, DetailActivity::class.java)
                 intent.putExtra(DetailActivity.PRODUCT,it)
 
-                //!! Transition sin terminar para el detail
 
-                // EN ESTA SECCION PROBE DE USAR SHARED TRANSITION PERO NO ME GUSTO EL RESULTADO, PREGUNTAR A JAVI
-
-                /* val options = ViewCompat.getTransitionName(findViewById(R.id.cardviewLista))?.let {
-                     ActivityOptionsCompat.makeSceneTransitionAnimation(
-                         this, findViewById(R.id.cardviewLista), it
-                     )
-                 }*/
 
                 startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle())
             }
@@ -276,24 +268,7 @@ class Shop : AppCompatActivity() {
 
         })
 
-        /*else if(fragment == carritoFragment){
-            service.getProduct(id).enqueue(object: Callback<ProductoApi> {
 
-                override fun onResponse(call: Call<ProductoApi>, response: Response<ProductoApi>) {
-                    product = response.body()!!
-                    Log.d("json?Id", products.toString())
-                    Log.i("GsonConverterId", Gson().toJson(products))
-                    val json = Gson().toJson(products)
-                    var bundleFrag = Bundle()
-                    bundleFrag.putString(SHOP_LIST, json)
-                    replaceFragment(fragment, bundleFrag)
-                }
-
-                override fun onFailure(call: Call<ProductoApi>, t: Throwable) {
-                    t.printStackTrace()
-                }
-            })
-        }*/
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

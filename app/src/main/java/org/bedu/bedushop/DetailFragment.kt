@@ -5,14 +5,11 @@ import android.text.method.ScrollingMovementMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.RatingBar
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.squareup.picasso.Picasso
-import io.realm.Realm
-import org.bedu.bedushop.Product
 
 class DetailFragment: Fragment() {
     private lateinit var tvProduct: TextView

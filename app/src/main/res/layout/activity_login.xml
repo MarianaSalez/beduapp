@@ -103,48 +103,6 @@
             android:background="@null"/>
     </com.google.android.material.textfield.TextInputLayout>
 
-    <!--<EditText
-       android:id="@+id/EmailAddress"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:layout_gravity="center"
-       android:layout_marginBottom="10dp"
-       android:drawableLeft="@drawable/person"
-       android:hint="@string/hintMail"
-       android:inputType="textEmailAddress"
-       android:textColor="@color/blanco"
-       android:textColorHint="#80FFFFFF" />
-
-  <TextView
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:id="@+id/mailInvalido"
-       android:visibility="invisible"
-       android:layout_gravity="center"
-       android:text="@string/mailIncorrecto"/>
-
-
-    <EditText
-        android:id="@+id/Password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginBottom="10dp"
-        android:drawableLeft="@drawable/candado"
-        android:ems="10"
-        android:hint="@string/hintContraseña"
-        android:inputType="textPassword"
-        android:textAlignment="center"
-        android:textColor="@color/blanco"
-        android:textColorHint="#80FFFFFF" />
-
-    <TextView
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:id="@+id/passwordIncorrecto"
-      android:visibility="invisible"
-      android:layout_gravity="center"
-      android:text="@string/passIncorrecto"/>-->
 
     //Botones de Inicio de Sesión y registo
     <Button

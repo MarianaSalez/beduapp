@@ -60,5 +60,10 @@
     <string name="envioNum">$30.00</string>
     <string name="totalNum">total</string>
     <string name="envioGratis">Gracias por elegir ser parte de la comunidad Bedu. El envio corre por cuenta nuestra!</string>
+    <string name="resumen_ultima_compra">Resumen Ultima Compra</string>
+    <string name="gracias_por_tu_compra">Gracias por tu compra!</string>
+    <string name="total">Total</string>
+    <string name="menu_principal">Menu Principal</string>
+    <string name="totalPAGO">total</string>
 
 </resources>

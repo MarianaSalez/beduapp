@@ -5,12 +5,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.RatingBar
 import android.widget.TextView
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
-import io.realm.Realm
-import org.bedu.bedushop.Opciones
-import org.bedu.bedushop.Product
 import org.bedu.bedushop.ProductoApi
 import org.bedu.bedushop.R
 

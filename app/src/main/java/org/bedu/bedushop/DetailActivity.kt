@@ -5,16 +5,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.transition.Slide
 import android.view.Gravity
-import android.view.Menu
 import android.view.View
 import android.widget.Button
-import android.widget.ImageView
-import androidx.fragment.app.Fragment
 import com.airbnb.lottie.LottieAnimationView
-import io.realm.Realm
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
-import org.bedu.bedushop.Product
 
 class DetailActivity : AppCompatActivity() {
     companion object {
@@ -32,7 +27,7 @@ class DetailActivity : AppCompatActivity() {
 
        carroCompra=findViewById(R.id.imgProduct)
 
-        //!! Transition sin terminar para el detail
+
         val transition = Slide(Gravity.BOTTOM).apply {
             duration = 500
             excludeTarget(window.decorView.findViewById<View>(R.id.action_bar_container), true)
@@ -40,7 +35,7 @@ class DetailActivity : AppCompatActivity() {
             excludeTarget(android.R.id.navigationBarBackground, true)
         }
         window.enterTransition = transition
-        //!! Transition sin terminar para el detail
+
 
         //Se realiza el binding de la informacion recibida desde el lsit fragement  al detail fragment
 

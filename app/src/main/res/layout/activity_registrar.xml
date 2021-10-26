@@ -25,18 +25,19 @@
 
     <!--Imagen de Google-->
 
+    <!--Divisor-->
+
     <com.google.android.gms.common.SignInButton
         android:id="@+id/sign_in_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
         app:colorScheme="dark"
-        android:layout_marginTop="50dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.485"
+
         app:layout_constraintStart_toStartOf="parent"
-
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
-    <!--Divisor-->
 
     <TextView
         android:id="@+id/divider"
@@ -196,86 +197,3 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-       <!--
-
-       <EditText
-
-           android:id="@+id/editContraseña"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:layout_marginBottom="80dp"
-           android:drawableLeft="@drawable/candado"
-           android:ems="10"
-           android:hint="Contraseña"
-           android:inputType="textPassword"
-           android:textColor="@color/white"
-           android:textColorHint="@color/hint"
-           app:layout_constraintBottom_toTopOf="@+id/btnRegistrar"
-           app:layout_constraintEnd_toEndOf="parent"
-           app:layout_constraintHorizontal_bias="0.199"
-           app:layout_constraintStart_toStartOf="parent" />
-
-       <EditText
-           android:id="@+id/editTelefono"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:layout_marginBottom="30dp"
-           android:drawableLeft="@drawable/candado"
-           android:ems="10"
-           android:hint="Teléfono"
-           android:inputType="phone"
-           android:textColor="@color/white"
-           android:textColorHint="@color/hint"
-           app:layout_constraintBottom_toTopOf="@+id/editContraseña"
-           app:layout_constraintEnd_toEndOf="parent"
-           app:layout_constraintHorizontal_bias="0.199"
-           app:layout_constraintStart_toStartOf="parent" />
-
-       <EditText
-           android:id="@+id/editmail"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:layout_marginBottom="30dp"
-           android:drawableLeft="@drawable/mail"
-           android:ems="10"
-           android:hint="Correo electrónico"
-           android:inputType="textEmailAddress"
-           android:textColor="@color/white"
-           android:textColorHint="@color/hint"
-           app:layout_constraintBottom_toTopOf="@+id/editTelefono"
-           app:layout_constraintEnd_toEndOf="parent"
-           app:layout_constraintHorizontal_bias="0.199"
-           app:layout_constraintStart_toStartOf="parent" />
-
-       <EditText
-           android:id="@+id/editNombre"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:drawableLeft="@drawable/person"
-           android:ems="10"
-           android:hint="Nombre Completo"
-           android:inputType="textPersonName"
-           android:textColor="@color/white"
-           android:textColorHint="@color/hint"
-           app:layout_constraintBottom_toTopOf="@+id/editmail"
-           app:layout_constraintEnd_toEndOf="parent"
-           app:layout_constraintHorizontal_bias="0.199"
-           app:layout_constraintStart_toStartOf="parent"
-           app:layout_constraintTop_toBottomOf="@+id/imageView2"
-           app:layout_constraintVertical_bias="0.612" />
-
-
-
-       //Boton de registrar
-
-       <Button
-           android:id="@+id/btnRegistrar"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:layout_marginBottom="24dp"
-           android:backgroundTint="@color/NaranjaBedu"
-           android:text="Registrarte"
-           android:textColor="@color/blanco"
-           app:layout_constraintBottom_toBottomOf="parent"
-           app:layout_constraintEnd_toEndOf="parent"
-           app:layout_constraintStart_toStartOf="parent" -->
