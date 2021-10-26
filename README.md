@@ -40,6 +40,6 @@ Se utilizaron dependencias:
 * junit para testing
 
 ## EJECUCION DE LA APP ⚙️
-<div align="center"><img src="images/giftFuncionalidad.gif" width="50%" ></div>
+<div align="center"><img src="images/DEMO-BEDUSHOP (1).gif" width="50%" ></div>
 
 
