@@ -14,7 +14,7 @@ _
 
 _Como se observa en la imagen siguiente, la app tiene su landing page en el inicio de sesion, pudiendo acceder al registro en caso de no tener un  usuario creado.
 Una vez iniciada sesión, se puede navegar en la actividad de shop, entre tres pantallas de inicio que contiene lista de productos (pudiendo acceder al detalle del 
-producto y agregarlo al carrito), un carrito que contiene los productos seleccionados y una pantalla con informacion del usuario que aun se encuentra en construccion. 
+producto y agregarlo al carrito), un carrito que contiene los productos seleccionados y una pantalla con informacion del usuario. 
 Además, se cuenta con un menu superior sin funcionalidad momentanea de la opcion de busqueda, pero con acceso a la pagina de BEDU.
 
 
@@ -25,6 +25,7 @@ Además, se cuenta con un menu superior sin funcionalidad momentanea de la opcio
 _Para el desarrollo de la app se uso la aplicación Android Studio. Para el desarrollo de la misma se uso Android Oreo, con el API level 26. 
 Lenguaje 100% Kotlin.
 Color Tool de material Design.
+Se consume de dos paginas datos para las pruebas de funcionamiento: okHttp y fake api 
 _
 
 ### DEPENDENCIAS Y OTROS RECURSOS ⌨️
@@ -34,8 +35,11 @@ Se utilizaron dependencias:
 * Material designs
 * Dependencias para el inicio de sesion con Google
 * Gestion de Imagenes con Picasso
+* Lottie files para las animaciones
+* Services locations para la ubicacion del usuario
+* junit para testing
 
 ## EJECUCION DE LA APP ⚙️
-<div align="center"><img src="images/giftFuncionalidad.gif" width="50%" ></div>
+<div align="center"><img src="images/DEMO-BEDUSHOP (1).gif" width="50%" ></div>
 
 
