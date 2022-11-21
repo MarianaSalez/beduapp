@@ -1,3 +1,10 @@
+<p align="center">
+ <img style="width:75%"  height="180" src="https://res.cloudinary.com/dvkvyi1dr/image/upload/v1668723108/cv/banner_name_rostr1.jpg" />
+ 
+  <img height="180" border-radius:50 src="https://res.cloudinary.com/dvkvyi1dr/image/upload/v1669069713/cv/logo_bedu_qfzxko.jpg" />
+</p> 
+
+
 # BEDU APP-ACADEMIA NARANJAX
 
 _Este es un proyecto desarrollado dentro del curso 'Desarrollo Móvil Kotlin, impartido por BEDU como partner de NaranjaX en su modalidad de academia_
